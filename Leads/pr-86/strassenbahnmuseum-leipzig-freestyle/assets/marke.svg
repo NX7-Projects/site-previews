@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Straßenbahnmuseum Leipzig">
+  <rect width="48" height="48" fill="#0B1A31"/>
+  <g fill="none" stroke="#F8F4EC" stroke-width="2" stroke-linecap="round">
+    <path d="M24 13V9"/>
+    <path d="M17 5l7 4 7-4"/>
+  </g>
+  <path d="M14 19a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v18H14z" fill="#F8F4EC"/>
+  <path d="M14 31h20v6H14z" fill="#C1521A"/>
+  <rect x="17.5" y="19" width="5.5" height="7" fill="#0B1A31"/>
+  <rect x="25" y="19" width="5.5" height="7" fill="#0B1A31"/>
+  <g fill="#0B1A31">
+    <circle cx="18.5" cy="41" r="2.4"/>
+    <circle cx="29.5" cy="41" r="2.4"/>
+  </g>
+  <rect x="10" y="43.5" width="28" height="2" fill="#F0A25F"/>
+</svg>

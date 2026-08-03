@@ -1,0 +1,913 @@
+@charset "utf-8";
+
+/* =========================================================================
+   Heimatmuseum Kroppenstedt
+   Farbwelt, Formen und Schriften stammen aus dem Haus selbst:
+   Bruchstein der Boerde, dunkle Fachwerkbalken, das Oxidrot der Haustafel,
+   das Gruen der Fensterrahmen. Wiederkehrendes Formmotiv ist die Rundnische
+   der Stadtmauer im Museumshof.
+   ========================================================================= */
+
+/* --- Schriften: lokal, keine externen Aufrufe ---------------------------- */
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url("../fonts/fraunces-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url("../fonts/fraunces-latinext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/familjen-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/familjen-latinext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* --- System -------------------------------------------------------------- */
+
+:root {
+  /* Farbwelt aus dem Baustoff */
+  --kalk: #ece5d6;        /* Bruchstein hell - Grundflaeche */
+  --kalk-tief: #ddd2ba;   /* Bruchstein Schatten */
+  --putz: #f8f4ec;        /* Kalkputz zwischen den Balken */
+  --balken: #271f18;      /* Fachwerkbalken - Schriftfarbe */
+  --balken-weich: #5c4e41;/* Nebentext */
+  --ziegel: #a1361d;      /* Oxidrot der Haustafel und der Dachziegel */
+  --ziegel-hell: #c2532f;
+  --fenster: #78855e;     /* Gruen der Fensterrahmen */
+  --nacht: #1b1610;       /* Innenraum, dunkle Abschnitte */
+
+  /* EINE Abstandsskala */
+  --sp-1: 8px;
+  --sp-2: 16px;
+  --sp-3: 24px;
+  --sp-4: 40px;
+  --sp-5: 64px;
+  --sp-6: 96px;
+  --sp-7: 144px;
+
+  /* Typografie */
+  --schrift-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --schrift-text: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --t-hero: clamp(2.9rem, 8.6vw, 8rem);
+  --t-xl: clamp(2.15rem, 5.2vw, 4.5rem);
+  --t-l: clamp(1.5rem, 2.5vw, 2.2rem);
+  --t-m: clamp(1.0625rem, 0.98rem + 0.42vw, 1.28rem);
+  --t-s: 0.9375rem;
+  --t-label: 0.75rem;
+
+  /* Formmotiv Rundnische */
+  --nische: 50% 50% 2px 2px / 26% 26% 2px 2px;
+
+  --rand: 1px solid color-mix(in srgb, var(--balken) 18%, transparent);
+  --breite: 1280px;
+  --anschlag: clamp(20px, 5vw, 72px); /* eine Achse fuer alles */
+  --takt: cubic-bezier(0.22, 0.65, 0.25, 1);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--kalk);
+  color: var(--balken);
+  font-family: var(--schrift-text);
+  font-size: var(--t-m);
+  line-height: 1.62;
+  font-variant-numeric: lining-nums;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3 {
+  font-family: var(--schrift-display);
+  font-variation-settings: "SOFT" 28, "WONK" 1, "opsz" 120;
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p { margin: 0 0 var(--sp-3); max-width: 62ch; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--ziegel);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection { background: var(--ziegel); color: var(--putz); }
+
+.nur-sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.springmarke {
+  position: fixed;
+  top: var(--sp-2);
+  left: var(--sp-2);
+  z-index: 200;
+  padding: 12px 20px;
+  background: var(--balken);
+  color: var(--putz);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.springmarke:focus { transform: translateY(0); }
+
+.bahn {
+  width: 100%;
+  max-width: var(--breite);
+  margin-inline: auto;
+  padding-inline: var(--anschlag);
+}
+
+/* --- Etiketten und Kleinteile ------------------------------------------- */
+
+.etikett {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ziegel);
+  margin: 0 0 var(--sp-3);
+}
+.etikett::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  flex: none;
+}
+.etikett--hell { color: color-mix(in srgb, var(--ziegel-hell) 80%, #fff); }
+
+.vorsatz {
+  font-size: var(--t-l);
+  font-family: var(--schrift-display);
+  font-variation-settings: "SOFT" 40, "WONK" 0, "opsz" 40;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  max-width: 26ch;
+}
+
+.randnotiz {
+  font-size: var(--t-s);
+  line-height: 1.5;
+  color: var(--balken-weich);
+  max-width: 34ch;
+  padding-left: var(--sp-2);
+  border-left: 2px solid var(--kalk-tief);
+}
+
+/* --- Knoepfe ------------------------------------------------------------- */
+
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 14px var(--sp-3);
+  font-family: var(--schrift-text);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border: 1px solid var(--balken);
+  background: var(--balken);
+  color: var(--putz);
+  transition: background 0.35s var(--takt), color 0.35s var(--takt),
+    transform 0.35s var(--takt);
+}
+.knopf:hover { background: var(--ziegel); border-color: var(--ziegel); transform: translateY(-2px); }
+.knopf .pfeil { transition: transform 0.35s var(--takt); }
+.knopf:hover .pfeil { transform: translateX(5px); }
+
+.knopf--leer {
+  background: transparent;
+  color: var(--balken);
+  border-color: color-mix(in srgb, var(--balken) 40%, transparent);
+}
+.knopf--leer:hover { background: var(--balken); color: var(--putz); border-color: var(--balken); }
+
+.knopf--auf-bild { background: var(--putz); color: var(--balken); border-color: var(--putz); }
+.knopf--auf-bild:hover { background: var(--ziegel); color: var(--putz); border-color: var(--ziegel); }
+
+.knopf--leer-hell {
+  background: transparent;
+  color: var(--putz);
+  border-color: color-mix(in srgb, #fff 55%, transparent);
+}
+.knopf--leer-hell:hover { background: var(--putz); color: var(--balken); border-color: var(--putz); }
+
+/* Textlink mit Unterstrich, der auf Hover durchlaeuft */
+.zeiger {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  padding-bottom: 3px;
+  background-image: linear-gradient(var(--ziegel), var(--ziegel));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 2px;
+  transition: background-size 0.4s var(--takt);
+}
+.zeiger:hover { background-size: 100% 2px; }
+.zeiger .pfeil { transition: transform 0.35s var(--takt); }
+.zeiger:hover .pfeil { transform: translateX(5px); }
+
+/* --- Kopf ---------------------------------------------------------------- */
+
+.kopf {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  padding: var(--sp-2) var(--anschlag);
+  transition: background 0.4s var(--takt), box-shadow 0.4s var(--takt),
+    color 0.4s var(--takt), padding 0.4s var(--takt);
+  color: var(--putz);
+}
+.kopf.ist-fest {
+  background: color-mix(in srgb, var(--putz) 94%, transparent);
+  backdrop-filter: blur(10px);
+  color: var(--balken);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--balken) 14%, transparent);
+  padding-block: 10px;
+}
+
+.marke {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  text-decoration: none;
+  line-height: 1;
+}
+.marke__wort {
+  font-family: var(--schrift-display);
+  font-variation-settings: "SOFT" 20, "WONK" 0, "opsz" 40;
+  font-weight: 600;
+  font-size: 1.28rem;
+  letter-spacing: -0.015em;
+}
+.marke__ort {
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ziegel-hell);
+}
+.kopf.ist-fest .marke__ort { color: var(--ziegel); }
+
+.wegweiser {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1.6vw, 20px);
+}
+.wegweiser a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 6px 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+}
+.wegweiser a::after {
+  content: "";
+  position: absolute;
+  left: 12px; right: 12px; bottom: 6px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--takt);
+}
+.wegweiser a:hover::after,
+.wegweiser a[aria-current="page"]::after { transform: scaleX(1); }
+.wegweiser a[aria-current="page"] { color: var(--ziegel-hell); }
+.kopf.ist-fest .wegweiser a[aria-current="page"] { color: var(--ziegel); }
+
+/* --- Kopfbild ------------------------------------------------------------ */
+
+.aufschlag {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 92svh;
+  padding-block: var(--sp-7) var(--sp-4);
+  overflow: hidden;
+  color: var(--putz);
+  isolation: isolate;
+}
+.aufschlag--knapp { min-height: 62svh; padding-block: var(--sp-7) var(--sp-5); }
+
+.aufschlag__bild {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 118%;
+  object-fit: cover;
+  object-position: 50% 58%;
+  will-change: transform;
+}
+.aufschlag::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(75deg, rgba(20, 15, 10, 0.88) 0%, rgba(20, 15, 10, 0.62) 46%,
+      rgba(20, 15, 10, 0.18) 78%),
+    linear-gradient(to top, rgba(20, 15, 10, 0.72), rgba(20, 15, 10, 0) 46%);
+}
+
+.aufschlag__satz { max-width: 20ch; }
+
+.aufschlag h1 {
+  font-size: var(--t-hero);
+  font-variation-settings: "SOFT" 18, "WONK" 1, "opsz" 144;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  margin-bottom: var(--sp-3);
+}
+.aufschlag--knapp h1 { font-size: var(--t-xl); }
+
+.aufschlag__unter {
+  font-size: clamp(1.0625rem, 1.35vw, 1.3rem);
+  max-width: 46ch;
+  color: color-mix(in srgb, var(--putz) 88%, transparent);
+  margin-bottom: var(--sp-4);
+}
+
+.aufschlag__knoepfe { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+
+/* Jahresleiste - die vier Nutzungen des Hauses, von der Haustafel abgelesen */
+.leiste {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: var(--sp-6);
+  border-top: 1px solid color-mix(in srgb, #fff 30%, transparent);
+  padding-top: var(--sp-3);
+}
+.leiste div { padding-right: var(--sp-2); }
+.leiste dt {
+  font-family: var(--schrift-display);
+  font-variation-settings: "SOFT" 12, "WONK" 0, "opsz" 90;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3.4vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: color-mix(in srgb, var(--ziegel-hell) 72%, #fff);
+}
+.leiste dd {
+  margin: 8px 0 0;
+  font-size: clamp(0.74rem, 1.15vw, 0.9rem);
+  line-height: 1.32;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--putz) 80%, transparent);
+}
+
+/* --- Abschnitte ---------------------------------------------------------- */
+
+.abschnitt { padding-block: clamp(var(--sp-5), 9vw, var(--sp-7)); }
+.abschnitt--eng { padding-block: var(--sp-5); }
+.abschnitt--dunkel { background: var(--nacht); color: var(--kalk); }
+.abschnitt--dunkel p { color: color-mix(in srgb, var(--kalk) 82%, transparent); }
+.abschnitt--putz { background: var(--putz); }
+
+.kopfzeile { max-width: 30ch; margin-bottom: var(--sp-5); }
+.kopfzeile h2 { font-size: var(--t-xl); margin-bottom: var(--sp-3); }
+.kopfzeile p { font-size: 1.05em; max-width: 52ch; }
+
+/* Auskunftsband: die wichtigste Besucherinformation, direkt unter dem Bild */
+.auskunft {
+  background: var(--putz);
+  border-bottom: var(--rand);
+}
+.auskunft__gitter {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: color-mix(in srgb, var(--balken) 14%, transparent);
+}
+.auskunft__feld {
+  background: var(--putz);
+  padding: var(--sp-4) var(--sp-3) var(--sp-4) 0;
+}
+.auskunft__gitter > .auskunft__feld + .auskunft__feld { padding-left: var(--sp-3); }
+.auskunft__feld h3 {
+  font-family: var(--schrift-text);
+  font-variation-settings: normal;
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--balken-weich);
+  margin-bottom: var(--sp-2);
+}
+.auskunft__feld p { margin: 0; font-size: 1.02rem; line-height: 1.5; }
+.auskunft__feld strong {
+  display: block;
+  font-family: var(--schrift-display);
+  font-variation-settings: "SOFT" 24, "WONK" 0, "opsz" 40;
+  font-weight: 600;
+  font-size: 1.34rem;
+  letter-spacing: -0.015em;
+  margin-bottom: 4px;
+}
+.auskunft__feld a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* --- Die vier Leben: Zeitspur ------------------------------------------- */
+
+.zeitspur { display: grid; grid-template-columns: 1fr; gap: var(--sp-5); }
+
+.stufe {
+  display: grid;
+  grid-template-columns: minmax(0, 4.4fr) minmax(0, 5.6fr);
+  gap: clamp(var(--sp-3), 4vw, var(--sp-5));
+  align-items: start;
+  padding-top: var(--sp-4);
+  border-top: 1px solid color-mix(in srgb, var(--balken) 20%, transparent);
+}
+.stufe__jahr {
+  font-family: var(--schrift-display);
+  font-variation-settings: "SOFT" 8, "WONK" 1, "opsz" 144;
+  font-weight: 400;
+  font-size: clamp(3.6rem, 11vw, 8.5rem);
+  line-height: 0.84;
+  letter-spacing: -0.05em;
+  color: var(--ziegel);
+  margin: 0 0 var(--sp-2);
+}
+.stufe h3 { font-size: var(--t-l); margin-bottom: var(--sp-2); }
+.stufe__nutzung {
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--balken-weich);
+  margin-bottom: var(--sp-3);
+}
+/* Die zweite und vierte Stufe ruecken ein - der Hof ist auch nicht rechtwinklig */
+.stufe:nth-child(even) { margin-left: clamp(0px, 6vw, 96px); }
+
+/* --- Nischen: das Formmotiv der Stadtmauer ------------------------------ */
+
+.nischen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: clamp(var(--sp-3), 3.5vw, var(--sp-5));
+}
+.nische { display: flex; flex-direction: column; }
+.nische__bogen {
+  position: relative;
+  border-radius: var(--nische);
+  overflow: hidden;
+  background: color-mix(in srgb, var(--kalk-tief) 60%, transparent);
+  aspect-ratio: 3 / 4;
+  margin-bottom: var(--sp-3);
+}
+.nische__bogen img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--takt);
+}
+.nische:hover .nische__bogen img { transform: scale(1.05); }
+.nische__bogen--leer {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 3 / 4;
+  border: 1px solid color-mix(in srgb, var(--kalk) 30%, transparent);
+  background: color-mix(in srgb, var(--kalk) 9%, transparent);
+}
+.nische .nische__zahl {
+  margin: 0;
+  font-family: var(--schrift-display);
+  font-variation-settings: "SOFT" 10, "WONK" 1, "opsz" 144;
+  font-weight: 400;
+  font-size: clamp(3.4rem, 7vw, 5.6rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: color-mix(in srgb, var(--ziegel-hell) 84%, #fff);
+}
+.nische h3 { font-size: 1.42rem; margin-bottom: var(--sp-1); }
+.nische p { font-size: 1rem; margin-bottom: var(--sp-2); }
+.nische__quelle {
+  font-size: 0.8125rem;
+  color: var(--balken-weich);
+  letter-spacing: 0.01em;
+}
+.abschnitt--dunkel .nische__quelle { color: color-mix(in srgb, var(--kalk) 62%, transparent); }
+
+/* --- Zweispalter mit Bild ------------------------------------------------ */
+
+.paar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(var(--sp-4), 5vw, var(--sp-6));
+  align-items: center;
+}
+.paar--versetzt { align-items: start; }
+.paar__bild { position: relative; }
+.paar__bild img { width: 100%; }
+.paar__bildunterschrift {
+  margin-top: 12px;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--balken-weich);
+  max-width: 42ch;
+}
+.abschnitt--dunkel .paar__bildunterschrift { color: color-mix(in srgb, var(--kalk) 62%, transparent); }
+
+/* Haustafel: sitzt leicht versetzt, wie an der Wand */
+.tafelbild {
+  max-width: 340px;
+  box-shadow: 14px 14px 0 color-mix(in srgb, var(--balken) 9%, transparent);
+}
+
+/* --- Vollbild-Streifen --------------------------------------------------- */
+
+.streifen {
+  position: relative;
+  min-height: 68svh;
+  display: flex;
+  align-items: flex-end;
+  padding-block: var(--sp-6) var(--sp-5);
+  overflow: hidden;
+  color: var(--putz);
+  isolation: isolate;
+}
+.streifen__bild {
+  position: absolute; inset: 0; z-index: -2;
+  width: 100%; height: 112%;
+  object-fit: cover;
+  will-change: transform;
+}
+.streifen::after {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(to top, rgba(18, 13, 9, 0.86), rgba(18, 13, 9, 0.15) 62%);
+}
+.streifen blockquote {
+  margin: 0;
+  max-width: 24ch;
+  font-family: var(--schrift-display);
+  font-variation-settings: "SOFT" 22, "WONK" 1, "opsz" 100;
+  font-weight: 500;
+  font-size: var(--t-xl);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+.streifen figcaption {
+  margin-top: var(--sp-3);
+  font-size: var(--t-s);
+  color: color-mix(in srgb, var(--putz) 76%, transparent);
+  max-width: 40ch;
+}
+
+/* --- Listen und Tabellen ------------------------------------------------- */
+
+.zeiten { width: 100%; border-collapse: collapse; max-width: 560px; }
+.zeiten caption { text-align: left; }
+.zeiten th,
+.zeiten td {
+  text-align: left;
+  padding: 14px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--balken) 15%, transparent);
+  vertical-align: baseline;
+}
+.zeiten th { font-weight: 600; padding-right: var(--sp-3); }
+.zeiten td { font-variant-numeric: tabular-nums; }
+.zeiten tr:last-child th,
+.zeiten tr:last-child td { border-bottom: 0; }
+
+.termine { list-style: none; margin: 0; padding: 0; }
+.termine li {
+  display: grid;
+  grid-template-columns: minmax(0, 150px) minmax(0, 1fr);
+  gap: var(--sp-2) var(--sp-3);
+  padding: var(--sp-3) 0;
+  border-top: 1px solid color-mix(in srgb, var(--balken) 16%, transparent);
+}
+.termine li:last-child { border-bottom: 1px solid color-mix(in srgb, var(--balken) 16%, transparent); }
+.termine__tag {
+  font-family: var(--schrift-display);
+  font-variation-settings: "SOFT" 16, "WONK" 0, "opsz" 60;
+  font-weight: 600;
+  font-size: 1.32rem;
+  letter-spacing: -0.02em;
+  color: var(--ziegel);
+  font-variant-numeric: tabular-nums;
+}
+.termine__was { font-weight: 600; }
+.termine__zeit { display: block; font-weight: 400; color: var(--balken-weich); font-size: 0.95rem; }
+
+.punkte { list-style: none; margin: 0 0 var(--sp-3); padding: 0; max-width: 56ch; }
+.punkte li {
+  position: relative;
+  padding: 0 0 var(--sp-2) var(--sp-3);
+}
+.punkte li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.66em;
+  width: 9px; height: 9px;
+  border: 1.5px solid var(--ziegel);
+  border-radius: 50% 50% 0 0;
+  transform: rotate(-45deg);
+}
+.abschnitt--dunkel .punkte li::before { border-color: var(--ziegel-hell); }
+
+/* Sachlisten: Raum -> Inhalt. Die Trennlinien sitzen an den Feldern selbst,
+   damit bei ungerader Feldzahl keine leeren Rasterzellen mitgefaerbt werden. */
+.sachen {
+  --linie: color-mix(in srgb, var(--balken) 16%, transparent);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  column-gap: var(--sp-4);
+  border-top: 1px solid var(--linie);
+}
+/* Kein linker Innenabstand: jede Zeile beginnt auf derselben Achse wie der
+   uebrige Text - auch die, die nach einem Umbruch neu anfaengt. */
+.sache {
+  padding: var(--sp-4) 0;
+  border-bottom: 1px solid var(--linie);
+}
+.abschnitt--dunkel .sachen { --linie: color-mix(in srgb, var(--kalk) 22%, transparent); }
+.sache h3 { font-size: 1.24rem; margin-bottom: var(--sp-1); }
+.sache p { font-size: 0.98rem; margin: 0; }
+
+/* --- Handlungsband ------------------------------------------------------- */
+
+.aufruf {
+  background: var(--balken);
+  color: var(--putz);
+}
+.aufruf .bahn {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--sp-4);
+  align-items: end;
+  padding-block: clamp(var(--sp-5), 8vw, var(--sp-6));
+}
+.aufruf h2 { font-size: var(--t-xl); }
+.aufruf p { color: color-mix(in srgb, var(--putz) 80%, transparent); }
+.aufruf__knoepfe { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+
+/* --- Fuss ---------------------------------------------------------------- */
+
+.fuss {
+  background: var(--nacht);
+  color: color-mix(in srgb, var(--kalk) 78%, transparent);
+  padding-block: var(--sp-6) var(--sp-4);
+  font-size: var(--t-s);
+}
+.fuss a { color: inherit; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); text-underline-offset: 3px; }
+.fuss a:hover { color: var(--putz); }
+.fuss__gitter {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: var(--sp-4);
+  padding-bottom: var(--sp-5);
+}
+.fuss h2 {
+  font-family: var(--schrift-text);
+  font-variation-settings: normal;
+  font-size: var(--t-label);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--kalk) 55%, transparent);
+  margin-bottom: var(--sp-2);
+}
+.fuss ul { list-style: none; margin: 0; padding: 0; }
+.fuss li { padding: 5px 0; }
+.fuss__marke {
+  font-family: var(--schrift-display);
+  font-variation-settings: "SOFT" 24, "WONK" 1, "opsz" 60;
+  font-size: 1.6rem;
+  line-height: 1.06;
+  color: var(--kalk);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-2);
+}
+/* Jahresleiste als wiederkehrendes Motiv im Fuss */
+.fuss__jahre {
+  display: flex;
+  max-width: none;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-3);
+  padding: var(--sp-3) 0;
+  border-top: 1px solid color-mix(in srgb, var(--kalk) 18%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--kalk) 18%, transparent);
+  margin-bottom: var(--sp-4);
+  font-family: var(--schrift-display);
+  font-variation-settings: "SOFT" 10, "WONK" 0, "opsz" 60;
+  font-size: 1.08rem;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--kalk) 60%, transparent);
+}
+.fuss__jahre span { white-space: nowrap; }
+.fuss__jahre b { color: var(--ziegel-hell); font-weight: 500; }
+.fuss__pflicht ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-3);
+}
+.fuss__pflicht li { padding: 0; }
+.fuss__schluss {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-3);
+  justify-content: space-between;
+  padding-top: var(--sp-3);
+  border-top: 1px solid color-mix(in srgb, var(--kalk) 18%, transparent);
+  color: color-mix(in srgb, var(--kalk) 58%, transparent);
+  font-size: 0.8125rem;
+}
+
+/* --- Schwebender Knopf --------------------------------------------------- */
+
+.schwebt {
+  position: fixed;
+  right: clamp(14px, 3vw, 32px);
+  bottom: clamp(14px, 3vw, 32px);
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 12px 20px;
+  background: var(--ziegel);
+  color: var(--putz);
+  border: 1px solid var(--ziegel);
+  font-family: var(--schrift-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(30, 20, 12, 0.28);
+  transition: transform 0.45s var(--takt), opacity 0.35s var(--takt),
+    background 0.35s var(--takt);
+}
+.schwebt:hover { background: var(--balken); border-color: var(--balken); }
+.schwebt.ist-weg {
+  opacity: 0;
+  transform: translateY(130%);
+  pointer-events: none;
+}
+.schwebt svg { flex: none; }
+
+/* --- Rechtstexte (Pflichtseiten aus Stufe 3) ---------------------------- */
+
+.rechtstext {
+  max-width: 68ch;
+  padding-block: clamp(var(--sp-6), 10vw, var(--sp-7)) var(--sp-6);
+}
+.rechtstext h1 {
+  font-size: var(--t-xl);
+  margin-bottom: var(--sp-4);
+}
+.rechtstext h2 {
+  font-size: var(--t-l);
+  margin: var(--sp-5) 0 var(--sp-2);
+  padding-top: var(--sp-3);
+  border-top: 1px solid color-mix(in srgb, var(--balken) 18%, transparent);
+}
+.rechtstext h3 {
+  font-size: 1.2rem;
+  margin: var(--sp-4) 0 var(--sp-1);
+}
+.rechtstext p { margin-bottom: var(--sp-3); }
+.rechtstext ul,
+.rechtstext ol { margin: 0 0 var(--sp-3); padding-left: var(--sp-3); }
+.rechtstext li { padding-bottom: var(--sp-1); }
+.rechtstext a {
+  text-decoration: underline;
+  text-decoration-color: var(--ziegel);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.rechtstext a:hover { color: var(--ziegel); }
+
+/* --- Bewegung ------------------------------------------------------------ */
+
+.js .aufdecken {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.85s var(--takt), transform 0.85s var(--takt);
+}
+.js .aufdecken.ist-da { opacity: 1; transform: none; }
+.js .aufdecken--spaet { transition-delay: 0.12s; }
+.js .aufdecken--spaeter { transition-delay: 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .js .aufdecken { opacity: 1; transform: none; }
+  .aufschlag__bild,
+  .streifen__bild { transform: none !important; height: 100%; }
+}
+
+/* --- Breiten ------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .stufe { grid-template-columns: 1fr; gap: var(--sp-2); }
+  .stufe:nth-child(even) { margin-left: 0; }
+  .leiste { grid-template-columns: repeat(2, 1fr); gap: var(--sp-3) var(--sp-2); }
+  .auskunft__gitter > .auskunft__feld + .auskunft__feld { padding-left: 0; }
+  .auskunft__feld { padding: var(--sp-3) 0; }
+  .sache { padding: var(--sp-3) 0; }
+}
+
+@media (max-width: 640px) {
+  /* Der Kopf steht auf dem Telefon zweizeilig - das Kopfbild macht ihm Platz. */
+  .aufschlag { min-height: 88svh; padding-block: 168px var(--sp-4); }
+  .aufschlag--knapp { padding-block: 152px var(--sp-4); }
+  .aufschlag__satz { max-width: 100%; }
+  .aufschlag__knoepfe .knopf { flex: 1 1 auto; justify-content: center; }
+  /* Schmales Bild, viel Text: der Schleier muss senkrecht statt schraeg laufen. */
+  .aufschlag::after,
+  .streifen::after {
+    background: linear-gradient(to top, rgba(20, 15, 10, 0.92) 0%,
+      rgba(20, 15, 10, 0.7) 55%, rgba(20, 15, 10, 0.55) 100%);
+  }
+  .leiste { margin-top: var(--sp-4); }
+  .termine li { grid-template-columns: 1fr; gap: 4px; }
+  .tafelbild { max-width: 260px; box-shadow: 10px 10px 0 color-mix(in srgb, var(--balken) 9%, transparent); }
+}
+
+/* Der schwebende Knopf bleibt auch klein kompakt - er darf nichts zudecken. */
+@media (max-width: 480px) {
+  .schwebt {
+    right: 12px;
+    bottom: 12px;
+    min-height: 46px;
+    padding: 11px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .stufe__jahr { position: sticky; top: 96px; }
+}

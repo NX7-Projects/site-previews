@@ -1,0 +1,90 @@
+{
+  "haus": {
+    "name": "Heimatmuseum Kroppenstedt",
+    "adresse": {
+      "strasse": "Am Kirchhof 2-3",
+      "plz": "39397",
+      "ort": "Kroppenstedt"
+    },
+    "telefon": "+49 39264 35504",
+    "email": "museumkroppenstedt@web.de"
+  },
+  "datenschutz": {
+    "hoster": "GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA",
+    "kontaktformular": false
+  },
+  "barrierefreiheit": {
+    "vereinbarkeit": "teilweise",
+    "einschraenkungen": [
+      "Die Karten- und Anfahrtsangaben liegen nur als Text vor, nicht als interaktive Karte.",
+      "Zur Barrierefreiheit des Gebaeudes selbst (Stufen, Tuerbreiten, Zugaenge) liegen keine geprueften Angaben vor; die Website weist darauf hin und bittet um telefonische Rueckfrage."
+    ]
+  },
+  "bilder": [
+    {
+      "stamm": "hof-martini",
+      "datei": "Kroppenstedt, Haus Am Kirchhof 2 und Kirche St.Martin.jpg",
+      "urheber": "Dguendel",
+      "lizenz": "CC BY 3.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Kroppenstedt,_Haus_Am_Kirchhof_2_und_Kirche_St.Martin.jpg",
+      "bearbeitung": "beschnitten und skaliert"
+    },
+    {
+      "stamm": "hof-stadtmauer",
+      "datei": "Kroppenstedt, Haus Am Kirchhof 2 (Museum) und Stadtmauer.jpg",
+      "urheber": "Dguendel",
+      "lizenz": "CC BY 3.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Kroppenstedt,_Haus_Am_Kirchhof_2_(Museum)_und_Stadtmauer.jpg",
+      "bearbeitung": "skaliert"
+    },
+    {
+      "stamm": "tafel-jahre",
+      "datei": "Kroppenstedt, Haus Am Kirchhof 2 (Museum) und Stadtmauer.jpg",
+      "urheber": "Dguendel",
+      "lizenz": "CC BY 3.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Kroppenstedt,_Haus_Am_Kirchhof_2_(Museum)_und_Stadtmauer.jpg",
+      "bearbeitung": "Ausschnitt (Haustafel) und skaliert"
+    },
+    {
+      "stamm": "giebel-ulenturm",
+      "datei": "Museum Kroppenstedt P1110479.jpg",
+      "urheber": "Goldmull",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Museum_Kroppenstedt_P1110479.jpg",
+      "bearbeitung": "beschnitten und skaliert"
+    },
+    {
+      "stamm": "nische-wagenrad",
+      "datei": "Kroppenstedt, Stadtmauer am Heimatmuseum (2) Nischen.jpg",
+      "urheber": "Manfred Schroeter, Berga",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Kroppenstedt,_Stadtmauer_am_Heimatmuseum_(2)_Nischen.jpg",
+      "bearbeitung": "beschnitten und skaliert"
+    },
+    {
+      "stamm": "fachwerk-eingang",
+      "datei": "Kroppenstedt, Heimatmuseum, Am Kirchhof 2.jpg",
+      "urheber": "Manfred Schroeter, Berga",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Kroppenstedt,_Heimatmuseum,_Am_Kirchhof_2.jpg",
+      "bearbeitung": "beschnitten und skaliert"
+    }
+  ],
+  "_luecken": [
+    "TRAEGER UND VERTRETUNG NICHT BELEGT: Weder das Museum noch die Verbandsgemeinde weisen oeffentlich aus, wer Traeger des Hauses ist (Stadt, Verbandsgemeinde, Verein). Deshalb sind 'vertretung', 'register' und 'verantwortlich' hier bewusst leer. Recherchierter Anhaltspunkt, NICHT als Impressumsangabe verwendbar: Das Museum wird auf der amtlichen Website der Verbandsgemeinde Westliche Boerde (Marktstrasse 7, 39397 Groeningen, Verbandsgemeindebuergermeister Fabian Stankewitz, post@westlicheboerde.de) als deren Museum gefuehrt; als Ansprechpartnerin ist dort Heike Wolter, Museumsmitarbeiterin, genannt. Quelle: https://www.westlicheboerde.de/Kultur-Tourismus/Museen/Museum-Kroppenstedt.php?object=tx,2991.5&ModID=7&FID=2991.1427.1&NavID=2991.59&La=1 und https://www.westlicheboerde.de/Verbandsgemeinde/Impressum.php (abgerufen 2026-08-03).",
+    "EINTRITTSPREISE NICHT BELEGT: Zu Eintritt, Ermaessigungen und Fuehrungspreisen findet sich keine oeffentliche Angabe. Die Website nennt deshalb keine Preise, sondern verweist auf die Telefonnummer des Hauses.",
+    "OEFFNUNGSZEITEN WIDERSPRECHEN SICH JE NACH QUELLE: Die amtliche Museumsseite der Verbandsgemeinde nennt Di/Mi/Fr 9-13 Uhr (uebernommen). Verzeichnisportale (museen.de, ortsdienst.de) nennen abweichend Mo-Do 10-16 Uhr und Fr 10-12 bzw. 10-13 Uhr. Vor Drucklegung durch das Haus bestaetigen lassen."
+  ]
+}
