@@ -1,0 +1,5 @@
+# Akquise-Entwurf, noch keine eigene Domain.
+# Bewusst vollstaendig gesperrt: diese Seite gehoert einem Haus, das noch
+# kein Kunde ist, und darf nicht in der Suche auftauchen.
+User-agent: *
+Disallow: /
