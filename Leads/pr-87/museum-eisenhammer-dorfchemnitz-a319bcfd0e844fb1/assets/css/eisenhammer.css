@@ -1,0 +1,1099 @@
+@charset "utf-8";
+/* ------------------------------------------------------------------
+   Museum Eisenhammer Dorfchemnitz
+   Gestaltungssystem. Die Farbwelt kommt aus dem Haus selbst:
+   Kalkputz der Hammergebaeude, Schieferdach, Russ im Hammerhaus,
+   gluehendes Eisen unter dem Schwanzhammer.
+   ------------------------------------------------------------------ */
+
+/* --- Schriften -------------------------------------------------- */
+/* Big Shoulders Display: schmale Industrie-Schrift aus der Tradition
+   der Werk- und Wegbeschriftung - die Entsprechung zu den geschmiedeten
+   Buchstaben am Giebel. Newsreader: warme Chronik-Antiqua fuer 660 Jahre
+   Betriebsgeschichte. */
+@font-face {
+  font-family: "Big Shoulders";
+  src: url("../fonts/bigshoulders-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Big Shoulders";
+  src: url("../fonts/bigshoulders-latinext.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+1E00-1E9F, U+2020, U+20A0-20AB, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader-latin.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader-latinext.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+1E00-1E9F, U+2020, U+20A0-20AB, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader-italic-latin.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212, U+FEFF, U+FFFD;
+}
+
+/* --- Werte ------------------------------------------------------- */
+:root {
+  /* Farben */
+  --kalk: #f2ede4;          /* Kalkputz der Hammergebaeude */
+  --papier: #fbf8f3;
+  --russ: #14110e;          /* Russ im Hammerhaus */
+  --eisen: #241f1a;
+  --tinte: #1e1a15;
+  --grau: #5c564e;
+  --schiefer: #56646b;      /* Schieferdach */
+  --glut: #a93b0c;          /* gluehendes Eisen, Textstaerke */
+  --glut-hell: #c3450f;     /* dieselbe Glut, nur als Flaeche/Zierrat */
+  --funke: #e8843a;         /* Funkenflug, nur auf dunklem Grund */
+  --kalk-dunkel: #efe7da;
+  --grau-dunkel: #a89d8d;
+  --linie: rgba(30, 26, 21, 0.16);
+  --linie-dunkel: rgba(239, 231, 218, 0.2);
+
+  /* Abstandsskala - eine einzige, ueberall */
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 40px;
+  --s5: 64px;
+  --s6: 96px;
+  --s7: 144px;
+
+  /* Typografie */
+  --display: "Big Shoulders", "Arial Narrow", sans-serif;
+  --text: "Newsreader", Georgia, "Times New Roman", serif;
+  --t-mega: clamp(3.4rem, 12vw, 11rem);
+  --t-h1: clamp(2.9rem, 8.2vw, 7rem);
+  --t-h2: clamp(2.3rem, 5.4vw, 4.4rem);
+  --t-h3: clamp(1.45rem, 2.6vw, 2.05rem);
+  --t-zahl: clamp(2.6rem, 6vw, 4.6rem);
+  --t-lead: clamp(1.16rem, 1.5vw, 1.48rem);
+  --t-body: clamp(1.02rem, 0.95vw, 1.12rem);
+  --t-klein: 0.95rem;
+  --t-label: 0.74rem;
+
+  /* Raster */
+  --rand: clamp(20px, 5.2vw, 104px);
+  --breit: 1480px;
+  --lesbar: 62ch;
+  --schwung: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* --- Grundlagen -------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--kalk);
+  color: var(--tinte);
+  font-family: var(--text);
+  font-size: var(--t-body);
+  font-weight: 380;
+  line-height: 1.62;
+  font-optical-sizing: auto;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p { margin: 0 0 var(--s3); }
+p:last-child { margin-bottom: 0; }
+
+a { color: inherit; }
+
+::selection { background: var(--glut-hell); color: var(--kalk); }
+
+:focus-visible {
+  outline: 3px solid var(--glut-hell);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+.dunkel :focus-visible { outline-color: var(--funke); }
+
+/* --- Wiederkehrendes Motiv: der Hammergraben ---------------------
+   Eine feine Linie mit regelmaessigen Kerben - Wasserlauf und
+   Schlagfolge in einem. Sie trennt auf jeder Seite die Kapitel. */
+.graben {
+  height: 9px;
+  border: 0;
+  margin: 0;
+  background-image:
+    linear-gradient(to bottom, transparent 3px, var(--linie) 3px, var(--linie) 4px, transparent 4px),
+    repeating-linear-gradient(to right, var(--linie) 0 1px, transparent 1px 28px);
+  background-repeat: repeat-x;
+}
+.dunkel .graben, .graben--hell {
+  background-image:
+    linear-gradient(to bottom, transparent 3px, var(--linie-dunkel) 3px, var(--linie-dunkel) 4px, transparent 4px),
+    repeating-linear-gradient(to right, var(--linie-dunkel) 0 1px, transparent 1px 28px);
+}
+
+/* --- Layout ------------------------------------------------------ */
+.huelle {
+  width: 100%;
+  max-width: var(--breit);
+  margin-inline: auto;
+  padding-inline: var(--rand);
+}
+
+.abschnitt { padding-block: clamp(var(--s5), 9vw, var(--s7)); }
+.abschnitt--eng { padding-block: clamp(var(--s4), 6vw, var(--s6)); }
+
+.dunkel {
+  background: var(--russ);
+  color: var(--kalk-dunkel);
+}
+.dunkel h1, .dunkel h2, .dunkel h3 { color: var(--kalk); }
+
+/* Kapitelkopf: Nummer, Titel, Beitext - immer an derselben Kante */
+.kapitel { display: grid; gap: var(--s3); margin-bottom: var(--s5); }
+.kapitel__zahl {
+  font-family: var(--display);
+  font-size: var(--t-label);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--glut);
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-weight: 600;
+}
+.dunkel .kapitel__zahl { color: var(--funke); }
+.kapitel__zahl::after {
+  content: "";
+  flex: 0 0 clamp(28px, 6vw, 90px);
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+.kapitel h2 { font-size: var(--t-h2); }
+.kapitel__lead {
+  font-size: var(--t-lead);
+  max-width: 46ch;
+  color: var(--grau);
+  line-height: 1.5;
+}
+.dunkel .kapitel__lead { color: var(--grau-dunkel); }
+
+.fliess { max-width: var(--lesbar); }
+.fliess p + p { margin-top: 0; }
+
+/* --- Randnotiz: kleine handschriftliche Nebenbemerkung ------------ */
+.randnotiz {
+  font-style: italic;
+  font-size: var(--t-klein);
+  color: var(--grau);
+  border-left: 2px solid var(--glut-hell);
+  padding-left: var(--s2);
+  max-width: 38ch;
+  line-height: 1.5;
+}
+.dunkel .randnotiz { color: var(--grau-dunkel); border-left-color: var(--funke); }
+
+/* --- Kopf -------------------------------------------------------- */
+.springen {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--russ);
+  color: var(--kalk);
+  padding: var(--s2) var(--s3);
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.springen:focus { left: var(--s2); top: var(--s2); }
+
+.kopf {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: color-mix(in srgb, var(--kalk) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s var(--schwung), border-color 0.3s var(--schwung);
+}
+.kopf--gescrollt { border-bottom-color: var(--linie); }
+.kopf--auf-dunkel {
+  background: color-mix(in srgb, var(--russ) 78%, transparent);
+  color: var(--kalk-dunkel);
+}
+.kopf__innen {
+  max-width: var(--breit);
+  margin-inline: auto;
+  padding: var(--s2) var(--rand);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s3);
+}
+
+.marke {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  text-decoration: none;
+  font-family: var(--display);
+  text-transform: uppercase;
+  line-height: 0.94;
+}
+.marke__amboss { flex: none; }
+.marke__amboss path { fill: currentColor; }
+.marke__wort { font-weight: 700; font-size: 1.32rem; letter-spacing: 0.01em; }
+.marke__ort {
+  display: block;
+  font-family: var(--text);
+  text-transform: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  font-weight: 400;
+  color: var(--grau);
+  margin-top: 3px;
+}
+.kopf--auf-dunkel .marke__ort { color: var(--grau-dunkel); }
+
+.nav { display: flex; align-items: center; gap: clamp(var(--s2), 2vw, var(--s4)); }
+.nav a {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 1.02rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 2px;
+  position: relative;
+}
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%; bottom: 6px;
+  height: 2px;
+  background: var(--glut-hell);
+  transition: right 0.32s var(--schwung);
+}
+.nav a:hover::after, .nav a:focus-visible::after { right: 0; }
+.nav a[aria-current="page"]::after { right: 0; background: var(--glut-hell); }
+.kopf--auf-dunkel .nav a::after,
+.kopf--auf-dunkel .nav a[aria-current="page"]::after { background: var(--funke); }
+
+.nav__schalter {
+  display: none;
+  background: none;
+  border: 1px solid var(--linie);
+  color: inherit;
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 11px var(--s2);
+  min-height: 44px;
+  cursor: pointer;
+}
+
+/* --- Knoepfe ----------------------------------------------------- */
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  font-size: 1.06rem;
+  line-height: 1;
+  padding: 17px var(--s3);
+  min-height: 48px;
+  text-decoration: none;
+  border: 1px solid var(--russ);
+  background: var(--russ);
+  color: var(--kalk);
+  transition: background 0.25s var(--schwung), color 0.25s var(--schwung), border-color 0.25s var(--schwung);
+}
+.knopf:hover, .knopf:focus-visible { background: var(--glut); border-color: var(--glut); color: #fff; }
+.knopf__pfeil { transition: transform 0.28s var(--schwung); }
+.knopf:hover .knopf__pfeil { transform: translateX(5px); }
+
+/* Heller Knopf fuer den Auftakt: auf dem Foto muss er sofort sitzen. */
+.knopf--hell {
+  background: var(--kalk);
+  border-color: var(--kalk);
+  color: var(--russ);
+}
+.knopf--hell:hover, .knopf--hell:focus-visible { background: var(--funke); border-color: var(--funke); color: var(--russ); }
+
+.knopf--offen {
+  background: transparent;
+  color: var(--tinte);
+  border-color: var(--linie);
+}
+.knopf--offen:hover, .knopf--offen:focus-visible { background: var(--russ); color: var(--kalk); border-color: var(--russ); }
+.dunkel .knopf--offen { color: var(--kalk-dunkel); border-color: var(--linie-dunkel); }
+.dunkel .knopf--offen:hover { background: var(--funke); border-color: var(--funke); color: var(--russ); }
+
+/* Textlink, der beim Beruehren warm wird */
+.glutlink {
+  text-decoration: none;
+  background-image: linear-gradient(var(--glut), var(--glut));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding-bottom: 2px;
+  transition: background-size 0.3s var(--schwung), color 0.3s var(--schwung);
+}
+.glutlink:hover, .glutlink:focus-visible { color: var(--glut); background-size: 100% 2px; }
+.dunkel .glutlink { background-image: linear-gradient(var(--funke), var(--funke)); }
+.dunkel .glutlink:hover, .dunkel .glutlink:focus-visible { color: var(--funke); }
+
+/* --- Auftakt (Hero) ---------------------------------------------- */
+.auftakt {
+  position: relative;
+  min-height: clamp(560px, 92svh, 940px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--russ);
+  margin-top: -1px;
+}
+.auftakt__bild {
+  position: absolute;
+  inset: -8% 0 -8% 0;
+  width: 100%;
+  height: 116%;
+  object-fit: cover;
+  object-position: 58% 52%;
+  will-change: transform;
+}
+/* Zwei Schleier: einer von unten fuer die Besucherleiste,
+   einer von links, damit die Schrift immer auf ruhigem Grund steht. */
+.auftakt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(14, 11, 9, 0.9) 0%, rgba(14, 11, 9, 0.78) 26%, rgba(14, 11, 9, 0.34) 54%, rgba(14, 11, 9, 0.1) 78%),
+    linear-gradient(to top, rgba(14, 11, 9, 0.86) 0%, rgba(14, 11, 9, 0.34) 30%, rgba(14, 11, 9, 0.06) 62%, rgba(14, 11, 9, 0.42) 100%);
+}
+.auftakt__innen {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--breit);
+  margin-inline: auto;
+  padding: var(--s6) var(--rand) var(--s5);
+  color: var(--kalk);
+}
+.auftakt__ueber {
+  font-family: var(--display);
+  font-size: var(--t-label);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--funke);
+  margin: 0 0 var(--s3);
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  flex-wrap: wrap;
+}
+.auftakt__ueber span { color: var(--kalk-dunkel); }
+.auftakt__ueber span::before { content: "· "; }
+@media (max-width: 860px) { .auftakt__ueber span::before { content: none; } }
+.auftakt h1 {
+  font-size: var(--t-h1);
+  font-weight: 700;
+  max-width: 15ch;
+  margin-bottom: var(--s3);
+}
+.auftakt h1 em {
+  font-style: normal;
+  display: block;
+  color: var(--funke);
+}
+.auftakt__lead {
+  font-size: var(--t-lead);
+  max-width: 44ch;
+  color: var(--kalk-dunkel);
+  line-height: 1.5;
+  margin-bottom: var(--s4);
+}
+.auftakt__lead strong { color: var(--kalk); font-weight: 500; }
+
+/* --- Seitenkopf der Unterseiten ---------------------------------- */
+.seitenkopf {
+  background: var(--russ);
+  color: var(--grau-dunkel);
+  padding-block: clamp(var(--s6), 13vw, var(--s7)) clamp(var(--s5), 7vw, var(--s6));
+  position: relative;
+  overflow: hidden;
+}
+.seitenkopf__bild {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.34;
+  filter: grayscale(0.3);
+}
+/* Schleier von links, damit die Schrift auch ueber hellen Bildstellen sitzt */
+.seitenkopf::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(14, 11, 9, 0.86) 0%, rgba(14, 11, 9, 0.66) 34%, rgba(14, 11, 9, 0.16) 72%);
+}
+.seitenkopf__innen { position: relative; z-index: 2; }
+.seitenkopf h1 {
+  font-size: var(--t-h1);
+  font-weight: 700;
+  color: var(--kalk);
+  max-width: 15ch;
+  margin-bottom: var(--s3);
+}
+.seitenkopf__ueber {
+  font-family: var(--display);
+  font-size: var(--t-label);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--funke);
+  margin: 0 0 var(--s3);
+}
+.seitenkopf__lead {
+  font-size: var(--t-lead);
+  max-width: 50ch;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Besucherleiste - die wichtigste Information im ersten Bildschirm */
+.leiste {
+  background: var(--russ);
+  color: var(--kalk-dunkel);
+  border-top: 1px solid var(--linie-dunkel);
+}
+.leiste__innen {
+  max-width: var(--breit);
+  margin-inline: auto;
+  padding-inline: var(--rand);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+.leiste__feld {
+  padding: var(--s4) var(--s3) var(--s4) 0;
+  border-right: 1px solid var(--linie-dunkel);
+  padding-right: var(--s4);
+}
+.leiste__feld:last-child { border-right: 0; }
+.leiste__feld dt {
+  font-family: var(--display);
+  font-size: var(--t-label);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--funke);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.leiste__feld dd {
+  margin: 0;
+  font-size: 1.06rem;
+  line-height: 1.42;
+  color: var(--kalk);
+}
+.leiste__feld dd span { display: block; color: var(--grau-dunkel); font-size: 0.94rem; }
+
+/* --- Kennzahlen: Technik als Gestaltung -------------------------- */
+.kennzahlen {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--linie);
+}
+.dunkel .kennzahlen { border-top-color: var(--linie-dunkel); }
+.kennzahlen li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--s3);
+  padding: var(--s3) 0;
+  border-bottom: 1px solid var(--linie);
+}
+.dunkel .kennzahlen li { border-bottom-color: var(--linie-dunkel); }
+.kennzahlen dfn, .kennzahlen b {
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--t-klein);
+  color: var(--grau);
+  letter-spacing: 0.02em;
+}
+.dunkel .kennzahlen dfn, .dunkel .kennzahlen b { color: var(--grau-dunkel); }
+.kennzahlen .wert {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  font-weight: 700;
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+  color: var(--tinte);
+  white-space: nowrap;
+}
+.dunkel .kennzahlen .wert { color: var(--kalk); }
+.kennzahlen .wert small {
+  font-size: 0.42em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--glut);
+  margin-left: 6px;
+}
+.dunkel .kennzahlen .wert small { color: var(--funke); }
+
+/* --- Datenliste (Bankverbindung, Eckdaten) ----------------------- */
+.daten {
+  margin: var(--s3) 0 0;
+  border-top: 1px solid var(--linie);
+}
+.dunkel .daten { border-top-color: var(--linie-dunkel); }
+.daten dt {
+  font-family: var(--display);
+  font-size: var(--t-label);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--glut);
+  padding-top: var(--s3);
+}
+.dunkel .daten dt { color: var(--funke); }
+.daten dd {
+  margin: 4px 0 0;
+  padding-bottom: var(--s3);
+  border-bottom: 1px solid var(--linie);
+  font-size: 1.12rem;
+}
+.dunkel .daten dd { border-bottom-color: var(--linie-dunkel); }
+.daten__zahl {
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* --- Zwei-Spalten-Motiv, bewusst asymmetrisch -------------------- */
+.paar {
+  display: grid;
+  gap: var(--s5) clamp(var(--s4), 5vw, var(--s6));
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .paar { grid-template-columns: 1.35fr 1fr; }
+  .paar--kehr { grid-template-columns: 1fr 1.35fr; }
+  .paar--kehr > :first-child { order: 2; }
+  .paar__versetzt { padding-top: var(--s6); }
+}
+
+.bildrahmen { position: relative; margin: 0; }
+.bildrahmen img { width: 100%; }
+.bildrahmen--breit img {
+  width: 100%;
+  max-height: 74svh;
+  object-fit: cover;
+  object-position: 50% 46%;
+}
+.bildrahmen--breit figcaption { max-width: 52ch; }
+.bildrahmen figcaption {
+  font-size: var(--t-klein);
+  color: var(--grau);
+  margin-top: var(--s2);
+  padding-left: var(--s2);
+  border-left: 1px solid var(--linie);
+  max-width: 40ch;
+}
+.dunkel .bildrahmen figcaption { color: var(--grau-dunkel); border-left-color: var(--linie-dunkel); }
+
+/* --- Der Schlag: Takt der beiden Schwanzhaemmer ------------------ */
+.haemmer {
+  display: grid;
+  gap: var(--s4);
+  margin-top: var(--s5);
+}
+@media (min-width: 720px) { .haemmer { grid-template-columns: 1fr 1fr; gap: var(--s5); } }
+
+.hammer { border-top: 2px solid var(--funke); padding-top: var(--s3); }
+.hammer h3 { font-size: var(--t-h3); margin-bottom: 10px; }
+.hammer p { font-size: var(--t-klein); color: var(--grau-dunkel); margin-bottom: var(--s3); }
+
+/* Der Schwanzhammer ist ein Balken, der um sein hinteres Ende kippt.
+   Genau das zeigt die Grafik - im belegten Takt der beiden Haemmer. */
+.takt {
+  position: relative;
+  height: 84px;
+  margin-bottom: var(--s3);
+}
+.takt__welle {
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 16px;
+  height: 46px;
+  background: var(--grau-dunkel);
+  opacity: 0.55;
+}
+.takt__stiel {
+  position: absolute;
+  left: 8px;
+  bottom: 44px;
+  width: 168px;
+  height: 8px;
+  background: var(--kalk-dunkel);
+  transform-origin: 0 50%;
+  animation: schlag var(--takt, 1s) cubic-bezier(0.5, 0, 0.9, 1) infinite;
+}
+.takt__stiel::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+  width: 30px;
+  height: 30px;
+  background: var(--kalk);
+}
+.takt__amboss {
+  position: absolute;
+  left: 142px;
+  bottom: 0;
+  width: 52px;
+  height: 26px;
+  background: var(--grau-dunkel);
+  clip-path: polygon(0 0, 100% 0, 84% 100%, 16% 100%);
+}
+.takt__glut {
+  position: absolute;
+  left: 148px;
+  bottom: 26px;
+  width: 40px;
+  height: 5px;
+  background: var(--funke);
+  opacity: 0;
+  animation: funken var(--takt, 1s) linear infinite;
+}
+.hammer p.takt__zahl, .takt__zahl {
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 5.4vw, 4rem);
+  font-weight: 700;
+  line-height: 0.8;
+  color: var(--kalk);
+  margin-bottom: 0;
+}
+.takt__zahl small {
+  display: block;
+  font-size: 0.24em;
+  letter-spacing: 0.18em;
+  color: var(--funke);
+  margin-top: 10px;
+  font-weight: 600;
+}
+@keyframes schlag {
+  0%   { transform: rotate(-13deg); }
+  34%  { transform: rotate(-13deg); }
+  48%  { transform: rotate(0deg); }
+  56%  { transform: rotate(-2deg); }
+  100% { transform: rotate(-13deg); }
+}
+@keyframes funken {
+  0%, 44% { opacity: 0; transform: scaleX(1); }
+  49% { opacity: 1; transform: scaleX(1.25); }
+  78% { opacity: 0; transform: scaleX(1); }
+  100% { opacity: 0; }
+}
+
+/* --- Zeitleiste -------------------------------------------------- */
+.zeitleiste { list-style: none; margin: 0; padding: 0; }
+.zeitleiste li {
+  display: grid;
+  grid-template-columns: minmax(88px, 0.16fr) minmax(0, 1fr);
+  gap: var(--s3) clamp(var(--s3), 3vw, var(--s5));
+  padding: var(--s3) 0;
+  border-bottom: 1px solid var(--linie);
+  align-items: baseline;
+}
+.dunkel .zeitleiste li { border-bottom-color: var(--linie-dunkel); }
+.zeitleiste li:first-child { border-top: 1px solid var(--linie); }
+.dunkel .zeitleiste li:first-child { border-top-color: var(--linie-dunkel); }
+.zeitleiste time, .zeitleiste .jahr {
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 0.84;
+  letter-spacing: -0.01em;
+  color: var(--glut);
+}
+.dunkel .zeitleiste time, .dunkel .zeitleiste .jahr { color: var(--funke); }
+.zeitleiste h3 {
+  font-family: var(--text);
+  font-size: 1.06rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+.zeitleiste p { font-size: var(--t-klein); color: var(--grau); max-width: 58ch; margin: 0; }
+.dunkel .zeitleiste p { color: var(--grau-dunkel); }
+.zeitleiste li:hover time, .zeitleiste li:hover .jahr { color: var(--glut-hell); }
+
+/* --- Termine ----------------------------------------------------- */
+.termine { list-style: none; margin: 0; padding: 0; }
+.termin {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s1) var(--s4);
+  padding: var(--s3) 0;
+  border-bottom: 1px solid var(--linie);
+  transition: padding-left 0.3s var(--schwung);
+}
+/* Feste Spaltenanteile statt auto: nur so beginnt jede Zeile an
+   derselben Kante - sonst hat jede Zeile ihr eigenes Raster. */
+@media (min-width: 760px) {
+  .termin {
+    grid-template-columns: minmax(160px, 0.22fr) minmax(0, 1fr) minmax(0, 0.36fr);
+    align-items: baseline;
+  }
+  .termin .termin__rhythmus { text-align: right; }
+}
+.termin:first-child { border-top: 1px solid var(--linie); }
+.termin:hover { padding-left: var(--s2); }
+.termin__datum {
+  font-family: var(--display);
+  font-size: 1.42rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--tinte);
+}
+.termin__titel { font-size: 1.12rem; font-weight: 500; }
+.termin__rhythmus { font-size: var(--t-klein); color: var(--grau); }
+.termin__marke {
+  font-family: var(--display);
+  font-size: var(--t-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--glut);
+  border: 1px solid currentColor;
+  padding: 5px 10px;
+  justify-self: start;
+  white-space: nowrap;
+}
+.dunkel .termin { border-color: var(--linie-dunkel); }
+.dunkel .termin__datum { color: var(--kalk); }
+.dunkel .termin__rhythmus { color: var(--grau-dunkel); }
+.dunkel .termin__marke { color: var(--funke); }
+
+/* --- Preise ------------------------------------------------------ */
+.preise { width: 100%; border-collapse: collapse; text-align: left; }
+.preise caption {
+  text-align: left;
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: var(--t-label);
+  font-weight: 600;
+  color: var(--glut);
+  padding-bottom: var(--s2);
+}
+.preise th, .preise td {
+  padding: var(--s2) var(--s2) var(--s2) 0;
+  border-bottom: 1px solid var(--linie);
+  vertical-align: baseline;
+}
+.preise thead th {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: var(--t-label);
+  font-weight: 600;
+  color: var(--grau);
+}
+.preise tbody th { font-weight: 500; font-size: 1.04rem; }
+.preise tbody th span { display: block; font-size: 0.88rem; color: var(--grau); font-weight: 400; }
+.preise td {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.preise td.mit { color: var(--glut); }
+.dunkel .preise th, .dunkel .preise td { border-bottom-color: var(--linie-dunkel); }
+.dunkel .preise caption { color: var(--funke); }
+.dunkel .preise thead th, .dunkel .preise tbody th span { color: var(--grau-dunkel); }
+.dunkel .preise td.mit { color: var(--funke); }
+
+/* --- Karten ohne Kachelreflex: gestapelte Bloecke ---------------- */
+.bloecke { display: grid; gap: 0; border-top: 1px solid var(--linie); }
+.dunkel .bloecke { border-top-color: var(--linie-dunkel); }
+.block {
+  padding: var(--s4) 0;
+  border-bottom: 1px solid var(--linie);
+  display: grid;
+  gap: var(--s2) var(--s5);
+}
+.dunkel .block { border-bottom-color: var(--linie-dunkel); }
+@media (min-width: 860px) { .block { grid-template-columns: minmax(180px, 0.28fr) minmax(0, 1fr); } }
+.block h3 { font-size: var(--t-h3); }
+.block p { max-width: 58ch; }
+.block__inhalt > *:last-child { margin-bottom: 0; }
+
+/* --- Zitat ------------------------------------------------------- */
+.zitat { margin: 0; max-width: 34ch; }
+.zitat blockquote {
+  margin: 0 0 var(--s3);
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  line-height: 1.32;
+  font-style: italic;
+  font-weight: 300;
+}
+.zitat figcaption { font-size: var(--t-klein); color: var(--grau); }
+.dunkel .zitat figcaption { color: var(--grau-dunkel); }
+
+/* --- Aufzaehlung mit Kerbe (Motiv) ------------------------------- */
+.kerbliste { list-style: none; margin: 0 0 var(--s3); padding: 0; }
+.kerbliste li {
+  position: relative;
+  padding-left: var(--s3);
+  margin-bottom: 12px;
+  max-width: 58ch;
+}
+.kerbliste li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 11px;
+  height: 2px;
+  background: var(--glut-hell);
+}
+.dunkel .kerbliste li::before { background: var(--funke); }
+
+/* --- Schwebender Knopf ------------------------------------------ */
+.schwebe {
+  position: fixed;
+  right: clamp(16px, 3vw, 34px);
+  bottom: clamp(16px, 3vw, 34px);
+  z-index: 55;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--russ);
+  color: var(--kalk);
+  text-decoration: none;
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 15px 20px;
+  min-height: 48px;
+  box-shadow: 0 10px 34px rgba(20, 17, 14, 0.32);
+  transition: transform 0.35s var(--schwung), opacity 0.3s var(--schwung), background 0.25s var(--schwung);
+}
+.schwebe:hover, .schwebe:focus-visible { background: var(--glut); }
+.schwebe svg { flex: none; }
+.schwebe--weg {
+  opacity: 0;
+  transform: translateY(130%);
+  pointer-events: none;
+}
+
+/* --- Fuss -------------------------------------------------------- */
+.fuss { background: var(--russ); color: var(--grau-dunkel); padding-block: var(--s6) var(--s4); }
+.fuss a { color: var(--kalk-dunkel); }
+.fuss__oben {
+  display: grid;
+  gap: var(--s5);
+  padding-bottom: var(--s5);
+}
+@media (min-width: 900px) { .fuss__oben { grid-template-columns: 1.3fr 1fr 1fr; } }
+.fuss h2 { font-size: clamp(2rem, 4vw, 3.2rem); color: var(--kalk); margin-bottom: var(--s3); max-width: 16ch; }
+.fuss h3 {
+  font-size: var(--t-label);
+  letter-spacing: 0.2em;
+  color: var(--funke);
+  margin-bottom: var(--s3);
+  font-weight: 600;
+}
+.fuss ul { list-style: none; margin: 0; padding: 0; }
+.fuss li { margin-bottom: 12px; }
+.fuss address { font-style: normal; line-height: 1.7; }
+.fuss__unten {
+  border-top: 1px solid var(--linie-dunkel);
+  padding-top: var(--s3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s4);
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.fuss__unten nav ul { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s3); }
+.fuss__unten li { margin: 0; }
+
+/* Linkliste der Pflichtseiten, von Stufe 3 eingesetzt */
+.fuss__pflicht .pflicht-links,
+.pflicht-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s3);
+}
+.pflicht-links a {
+  color: var(--grau-dunkel);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 0.25s var(--schwung), border-color 0.25s var(--schwung);
+}
+.pflicht-links a:hover, .pflicht-links a:focus-visible {
+  color: var(--funke);
+  border-bottom-color: var(--funke);
+}
+
+/* --- Rechtstexte (Stufe 3) -------------------------------------- */
+.rechtstext {
+  max-width: 68ch;
+  padding-block: clamp(var(--s5), 8vw, var(--s7));
+}
+.rechtstext h1 { font-size: var(--t-h2); margin-bottom: var(--s4); }
+.rechtstext h2 {
+  font-size: var(--t-h3);
+  margin-top: var(--s5);
+  margin-bottom: var(--s2);
+  padding-top: var(--s3);
+  border-top: 1px solid var(--linie);
+}
+.rechtstext h3 {
+  font-family: var(--text);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: var(--s4);
+  margin-bottom: var(--s1);
+}
+.rechtstext p { margin-bottom: var(--s3); }
+.rechtstext ul, .rechtstext ol { padding-left: var(--s3); margin: 0 0 var(--s3); }
+.rechtstext li { margin-bottom: var(--s1); }
+.rechtstext a {
+  color: var(--glut);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.rechtstext a:hover { text-decoration-thickness: 2px; }
+.rechtstext dl { margin: 0 0 var(--s3); }
+.rechtstext dt { font-weight: 600; margin-top: var(--s2); }
+.rechtstext dd { margin: 0 0 var(--s1); }
+.rechtstext table { width: 100%; border-collapse: collapse; margin-bottom: var(--s3); }
+.rechtstext th, .rechtstext td { text-align: left; padding: 10px var(--s2) 10px 0; border-bottom: 1px solid var(--linie); vertical-align: baseline; }
+
+/* --- Bewegung ----------------------------------------------------
+   Nur wenn JavaScript laeuft, wird ueberhaupt etwas versteckt -
+   sonst steht der Inhalt sofort und vollstaendig da. */
+.js .auf {
+  opacity: 0;
+  transform: translateY(26px);
+}
+.auf--da {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.75s var(--schwung), transform 0.75s var(--schwung);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+/* --- Kleine Bildschirme ------------------------------------------ */
+@media (max-width: 860px) {
+  .nav__schalter { display: inline-flex; align-items: center; }
+  .nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    top: 0;
+    padding: calc(var(--s6) + var(--s2)) var(--rand) var(--s5);
+    background: var(--russ);
+    color: var(--kalk);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s3);
+    transform: translateY(-102%);
+    transition: transform 0.42s var(--schwung);
+    box-shadow: 0 16px 40px rgba(20, 17, 14, 0.3);
+  }
+  .nav[data-offen="ja"] { transform: none; }
+  .nav a { font-size: 1.9rem; padding: 6px 0; }
+  .nav a::after { bottom: 2px; background: var(--funke); }
+  .leiste__feld { border-right: 0; border-bottom: 1px solid var(--linie-dunkel); padding: var(--s3) 0; }
+  .leiste__feld:last-child { border-bottom: 0; }
+  .auftakt { min-height: 88svh; }
+  /* Auf schmalen Schirmen den Giebel mit dem Schriftzug im Bild halten. */
+  .auftakt__bild { object-position: 74% 44%; }
+  .auftakt__innen { padding-block: var(--s5) var(--s4); }
+  .auftakt__ueber { gap: 4px 10px; }
+  .schwebe { font-size: 0.9rem; padding: 12px 14px; right: 12px; bottom: 12px; gap: 8px; }
+  .schwebe .schwebe__lang { display: none; }
+  .bildrahmen--breit img { max-height: none; }
+  .zeitleiste li { grid-template-columns: 1fr; gap: 6px; }
+  .preise td { font-size: 1.32rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .auf { opacity: 1; transform: none; }
+  .takt__stiel, .takt__glut { animation: none; }
+  .takt__glut { opacity: 0.9; }
+  .takt__stiel { transform: rotate(-6deg); }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media print {
+  .kopf, .schwebe, .nav__schalter { display: none; }
+  body { background: #fff; color: #000; }
+}

@@ -1,0 +1,980 @@
+/* ==========================================================================
+   Torhaus Dölitz mit Zinnfigurenmuseum
+   Gestaltungssystem. Alles hier ist aus dem Haus abgeleitet:
+
+   FARBE     Kalkputz (die weisse Fassade), Zinn (das Material der Figuren),
+             Ziegel (das Dach), Sandstein (die Bogenquader).
+   SCHRIFT   Bodoni Moda fuer alles Grosse - die Antiqua der Epoche, von der
+             dieses Haus erzaehlt; Giambattista Bodoni starb 1813.
+             Archivo fuer Lesetext und Beschriftung - ruhig, institutionell,
+             gut in kleinen Graden wie ein Objektschild.
+   MOTIV     Der Rundbogen. Das Torhaus ist ein Durchgang; der Bogen ist die
+             einzige runde Form auf dieser Seite. Alles andere hat Kanten.
+   ========================================================================== */
+
+/* ---------- Schriften, lokal ---------------------------------------------- */
+
+@font-face {
+  font-family: 'Bodoni Moda';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('../fonts/bodoni-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Bodoni Moda';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('../fonts/bodoni-latinext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Bodoni Moda';
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('../fonts/bodoni-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url('../fonts/archivo-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url('../fonts/archivo-latinext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- Marken ------------------------------------------------------- */
+
+:root {
+  /* Farbwelt aus dem Material des Hauses */
+  --kalk:        #f2eee6;  /* Kalkputz der Fassade */
+  --kalk-warm:   #e8e1d4;  /* Putz im Schatten */
+  --sandstein:   #d9cdb8;  /* die Quader des Torbogens */
+  --zinn-900:    #21262b;  /* Zinn, ungeputzt */
+  --zinn-700:    #3a424a;
+  --zinn-500:    #5b646d;
+  --zinn-200:    #b7bcc1;
+  --ziegel:      #a03d28;  /* Dachziegel */
+  --ziegel-hell: #d8846a;  /* Ziegel auf dunklem Grund */
+  --rose:        #a4738a;  /* die Hausfarbe des Museums */
+
+  /* Eine Abstandsskala. Keine krummen Zwischenwerte. */
+  --s1: 4px;  --s2: 8px;   --s3: 16px;  --s4: 24px;
+  --s5: 40px; --s6: 64px;  --s7: 96px;  --s8: 160px;
+
+  /* Satzbreiten */
+  --bund: clamp(20px, 5vw, 72px);   /* Seitenrand = die eine Achse */
+  --breit: 1500px;
+  --lesebreite: 62ch;
+
+  --bogen: 999px 999px 0 0;         /* die einzige Rundung im System */
+  --linie: 1px solid rgba(33, 38, 43, 0.16);
+  --dauer: 0.7s;
+  --kurve: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ---------- Grundlage ---------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  margin: 0;
+  background: var(--kalk);
+  color: var(--zinn-900);
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-size: clamp(16px, 0.55vw + 14px, 18px);
+  line-height: 1.62;
+  font-synthesis-weight: none;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* ---------- Typografie --------------------------------------------------- */
+
+h1, h2, h3, .display {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.t-riesig { font-size: clamp(46px, 9.2vw, 148px); font-weight: 700; letter-spacing: -0.025em; }
+.t-gross  { font-size: clamp(34px, 5.6vw, 84px);  font-weight: 600; }
+.t-mittel { font-size: clamp(26px, 3.2vw, 44px);  font-weight: 600; line-height: 1.06; }
+.t-klein  { font-size: clamp(20px, 1.8vw, 27px);  font-weight: 600; line-height: 1.16; }
+
+/* Objektschild: so beschriftet ein Museum seine Vitrinen. */
+.schild {
+  font-family: 'Archivo', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--zinn-500);
+  margin: 0 0 var(--s3);
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+.schild::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--ziegel);
+  flex: none;
+}
+.schild--blank::before { display: none; }
+
+/* Randnotiz - der kurze Zusatz am Rand, wie handschriftlich nachgetragen. */
+.notiz {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--zinn-500);
+  max-width: min(30ch, 100%);
+  border-left: 2px solid var(--sandstein);
+  padding-left: var(--s3);
+}
+
+.vorspann {
+  font-size: clamp(19px, 1.35vw, 23px);
+  line-height: 1.5;
+  max-width: min(46ch, 100%);
+  color: var(--zinn-700);
+}
+
+p { max-width: min(var(--lesebreite), 100%); margin: 0 0 var(--s4); }
+p:last-child { margin-bottom: 0; }
+
+a { color: inherit; }
+
+/* ---------- Raster ------------------------------------------------------- */
+
+.wrap {
+  width: 100%;
+  max-width: var(--breit);
+  margin-inline: auto;
+  padding-inline: var(--bund);
+}
+
+.abschnitt { padding-block: clamp(64px, 11vw, 160px); }
+.abschnitt--eng { padding-block: clamp(40px, 7vw, 96px); }
+
+/* Alle Textzeilen beginnen an derselben Kante. Zwei Spalten, ungleich. */
+.zweispalt {
+  display: grid;
+  gap: var(--s6) var(--s5);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .zweispalt { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s7) var(--s6); }
+  .zweispalt--kippen { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .zweispalt--versatz > :last-child { margin-top: var(--s7); }
+}
+
+/* ---------- Der Bogen ---------------------------------------------------- */
+
+/* Bild unter einem Rundbogen: die Grundform des Hauses. */
+.bogen {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--bogen);
+  background: var(--kalk-warm);
+}
+.bogen img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Der gemauerte Rand: Sandsteinquader wie ueber dem echten Torbogen. */
+.bogen--quader::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 10px solid var(--sandstein);
+  border-radius: var(--bogen);
+  border-bottom: 0;
+  pointer-events: none;
+}
+
+/* Gedenktafeln sind Dokumente, keine Architektur - sie bekommen keinen Bogen,
+   sondern eine schmale Sandsteinkante wie ein gerahmtes Blatt. */
+.tafelbild {
+  position: relative;
+  overflow: hidden;
+  background: var(--kalk-warm);
+  outline: 1px solid rgba(217, 205, 184, 0.7);
+  outline-offset: -1px;
+}
+.tafelbild img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Kleines Bogenzeichen als Absatzmarke. */
+.bogenmarke {
+  width: 34px;
+  height: 17px;
+  border: 2px solid var(--ziegel);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+}
+
+/* ---------- Kopf --------------------------------------------------------- */
+
+.kopf {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: rgba(242, 238, 230, 0.86);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: var(--linie);
+  transition: background 0.4s var(--kurve), border-color 0.4s var(--kurve);
+}
+.kopf__innen {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  min-height: 76px;
+  padding-block: var(--s2);
+}
+
+.lockup {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  text-decoration: none;
+  color: inherit;
+}
+.lockup img { width: 62px; height: auto; flex: none; }
+.lockup__text { display: flex; flex-direction: column; line-height: 1.05; }
+.lockup__haupt {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.lockup__zusatz {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--zinn-500);
+  margin-top: 3px;
+}
+
+.nav { display: none; }
+@media (min-width: 1000px) {
+  .nav { display: flex; align-items: center; gap: var(--s5); }
+}
+.nav a {
+  font-size: 14.5px;
+  font-weight: 500;
+  text-decoration: none;
+  padding-block: var(--s2);
+  position: relative;
+  white-space: nowrap;
+}
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 100%; bottom: 2px;
+  height: 1px;
+  background: var(--ziegel);
+  transition: right var(--dauer) var(--kurve);
+}
+.nav a:hover::after, .nav a:focus-visible::after { right: 0; }
+.nav a[aria-current='page'] { color: var(--ziegel); }
+.nav a[aria-current='page']::after { right: 0; }
+
+/* Menuknopf fuer schmale Fenster */
+.menuknopf {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 44px;
+  padding: var(--s2) var(--s3);
+  border: 1px solid var(--zinn-900);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+@media (min-width: 1000px) { .menuknopf { display: none; } }
+
+.schublade {
+  display: none;
+  border-top: var(--linie);
+  padding-block: var(--s4) var(--s5);
+}
+.schublade[data-offen='true'] { display: block; }
+@media (min-width: 1000px) { .schublade { display: none !important; } }
+.schublade a {
+  display: block;
+  padding-block: var(--s3);
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: 28px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: var(--linie);
+}
+.schublade a:last-child { border-bottom: 0; }
+
+/* ---------- Knoepfe ------------------------------------------------------ */
+
+.knopf {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s3);
+  min-height: 52px;
+  padding: var(--s3) var(--s5);
+  background: var(--zinn-900);
+  color: var(--kalk);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--zinn-900);
+  transition: background 0.35s var(--kurve), color 0.35s var(--kurve), transform 0.35s var(--kurve);
+}
+.knopf:hover, .knopf:focus-visible { background: var(--ziegel); border-color: var(--ziegel); transform: translateY(-2px); }
+.knopf__pfeil { transition: transform 0.35s var(--kurve); }
+.knopf:hover .knopf__pfeil { transform: translateX(5px); }
+
+.knopf--leer { background: transparent; color: var(--zinn-900); border-color: var(--zinn-900); }
+.knopf--leer:hover, .knopf--leer:focus-visible { background: var(--zinn-900); color: var(--kalk); }
+
+.knopf--hell { background: var(--kalk); color: var(--zinn-900); border-color: var(--kalk); }
+.knopf--hell:hover, .knopf--hell:focus-visible { background: var(--ziegel-hell); border-color: var(--ziegel-hell); color: var(--zinn-900); }
+
+.knopf--umriss-hell { background: transparent; color: var(--kalk); border-color: rgba(242, 238, 230, 0.55); }
+.knopf--umriss-hell:hover, .knopf--umriss-hell:focus-visible { background: var(--kalk); border-color: var(--kalk); color: var(--zinn-900); }
+
+/* Textlink mit Unterstreichung, die beim Hovern durchlaeuft */
+.textlink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 44px;                 /* Fingerkuppe, nicht Mauszeiger */
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  padding-block: var(--s2);
+  background-image: linear-gradient(var(--ziegel), var(--ziegel));
+  background-size: 100% 1px;
+  background-position: 0 calc(100% - 6px);
+  background-repeat: no-repeat;
+  transition: background-size 0.4s var(--kurve), color 0.3s var(--kurve);
+}
+.textlink:hover, .textlink:focus-visible { color: var(--ziegel); background-size: 0% 1px; }
+
+/* ---------- Hero --------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  min-height: min(94svh, 940px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--zinn-900);
+}
+.hero__bild { position: absolute; inset: 0; }
+.hero__bild img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+.hero__schleier {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(100deg, rgba(20, 24, 28, 0.92) 0%, rgba(20, 24, 28, 0.78) 30%, rgba(20, 24, 28, 0.2) 62%, rgba(20, 24, 28, 0.34) 100%),
+    linear-gradient(to top, rgba(20, 24, 28, 0.76) 0%, rgba(20, 24, 28, 0) 52%);
+}
+.hero__innen {
+  position: relative;
+  width: 100%;
+  min-width: 0;          /* sonst waechst das Flex-Kind mit seinem laengsten Wort */
+  padding-block: var(--s7) var(--s6);
+  color: var(--kalk);
+}
+.hero__kicker {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sandstein);
+  margin: 0 0 var(--s4);
+  max-width: none;
+  display: flex; align-items: center; gap: var(--s3); flex-wrap: wrap;
+}
+.hero__kicker span { display: inline-flex; align-items: center; gap: var(--s3); }
+.hero__kicker span::after { content: ''; width: 5px; height: 5px; background: var(--ziegel-hell); }
+.hero__kicker span:last-child::after { display: none; }
+/* Umbricht die Zeile, sind die Trennpunkte nur noch Fusseln. */
+@media (max-width: 720px) {
+  .hero__kicker { gap: var(--s1) var(--s3); }
+  .hero__kicker span::after { display: none; }
+}
+
+.hero h1 { color: var(--kalk); max-width: min(15ch, 100%); }
+.hero__vor {
+  margin: var(--s5) 0 0;
+  max-width: min(44ch, 100%);
+  color: rgba(242, 238, 230, 0.9);
+  font-size: clamp(17px, 1.15vw, 20px);
+  line-height: 1.56;
+}
+.hero__tun { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s5); max-width: none; }
+
+/* Auftakt der Unterseiten: dieselbe Achse, halbe Hoehe. */
+.hero--klein { min-height: min(66svh, 620px); }
+.hero--klein .hero__innen { padding-block: var(--s6) var(--s5); }
+.hero--klein h1 { max-width: min(18ch, 100%); }
+.hero--klein .hero__vor { margin-top: var(--s4); }
+
+/* Die wichtigste Besucherinformation, im ersten Bildschirm. */
+.hero__leiste {
+  margin-top: var(--s6);
+  padding-top: var(--s4);
+  border-top: 1px solid rgba(242, 238, 230, 0.28);
+  max-width: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s5);
+  font-size: 14px;
+  color: rgba(242, 238, 230, 0.86);
+}
+.hero__leiste b { color: var(--kalk); font-weight: 600; }
+
+/* ---------- Zahlenband --------------------------------------------------- */
+
+.band {
+  background: var(--zinn-900);
+  color: var(--kalk);
+  padding-block: clamp(56px, 8vw, 112px);
+}
+.band .schild { color: var(--zinn-200); }
+.band .schild::before { background: var(--ziegel-hell); }
+
+.zahlen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s5) var(--s4);
+  margin-top: var(--s6);
+}
+@media (min-width: 760px)  { .zahlen { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1120px) { .zahlen { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (min-width: 1120px) { .zahlen--drei { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.zahlen--paar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 760px)  { .zahlen--paar { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1120px) { .zahlen--paar { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Jede Zahl steht in einer Nische - so wie die Figuren in ihren Vitrinen. */
+.nische { position: relative; padding-top: var(--s5); }
+.nische::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 44px; height: 22px;
+  border: 1px solid rgba(216, 132, 106, 0.55);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+}
+.nische__zahl {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: clamp(34px, 3.5vw, 54px);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  font-variant-numeric: lining-nums tabular-nums;
+  display: block;
+  white-space: nowrap;
+}
+/* Weniger Spalten heisst mehr Platz je Zahl. */
+.zahlen--wenig .nische__zahl { font-size: clamp(40px, 5vw, 76px); }
+.nische__einheit { font-size: 0.46em; letter-spacing: 0; margin-left: 0.14em; }
+.nische__was {
+  margin: var(--s3) 0 0;
+  font-size: 14px;
+  line-height: 1.42;
+  color: var(--zinn-200);
+  max-width: min(22ch, 100%);
+}
+
+/* ---------- Flaechen ----------------------------------------------------- */
+
+.flaeche-dunkel { background: var(--zinn-900); color: var(--kalk); }
+.flaeche-dunkel .schild { color: var(--zinn-200); }
+.flaeche-dunkel .schild::before { background: var(--ziegel-hell); }
+.flaeche-dunkel .vorspann { color: rgba(242, 238, 230, 0.84); }
+.flaeche-dunkel .notiz { color: var(--zinn-200); border-left-color: rgba(216, 132, 106, 0.5); }
+.flaeche-dunkel .textlink { background-image: linear-gradient(var(--ziegel-hell), var(--ziegel-hell)); }
+.flaeche-dunkel .textlink:hover { color: var(--ziegel-hell); }
+
+.flaeche-sand { background: var(--kalk-warm); }
+
+/* ---------- Bildunterschrift --------------------------------------------- */
+
+figure { margin: 0; }
+figcaption {
+  margin-top: var(--s3);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--zinn-500);
+  max-width: min(42ch, 100%);
+}
+.flaeche-dunkel figcaption { color: var(--zinn-200); }
+
+/* ---------- Listen und Tafeln -------------------------------------------- */
+
+/* Angaben-Tafel: linke Spalte Begriff, rechte Spalte Wert, eine Achse. */
+.tafel { margin: 0; }
+.tafel > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s1) var(--s5);
+  padding-block: var(--s4);
+  border-top: var(--linie);
+}
+.tafel > div:last-child { border-bottom: var(--linie); }
+@media (min-width: 620px) {
+  .tafel > div { grid-template-columns: minmax(140px, 0.42fr) minmax(0, 1fr); }
+}
+.tafel dt {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--zinn-500);
+  padding-top: 4px;
+}
+.tafel dd { margin: 0; }
+.tafel dd b { font-weight: 600; }
+.tafel dd small { display: block; font-size: 14px; color: var(--zinn-500); margin-top: var(--s1); }
+.flaeche-dunkel .tafel > div { border-color: rgba(242, 238, 230, 0.18); }
+.flaeche-dunkel .tafel dt { color: var(--zinn-200); }
+.flaeche-dunkel .tafel dd small { color: var(--zinn-200); }
+
+/* Preisliste */
+.preise { list-style: none; margin: 0; padding: 0; }
+.preise li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s3);
+  padding-block: var(--s3);
+  border-bottom: var(--linie);
+}
+.preise li:first-child { border-top: var(--linie); }
+.preise__was { flex: none; max-width: 60%; }
+.preise__was small { display: block; font-size: 13.5px; color: var(--zinn-500); }
+.preise__punkte { flex: 1; border-bottom: 1px dotted rgba(33, 38, 43, 0.3); transform: translateY(-4px); }
+.preise__wert {
+  flex: none;
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* Termin-Liste: Datum gross links, Titel rechts. */
+.termine { list-style: none; margin: 0; padding: 0; }
+.termine li { border-top: var(--linie); }
+.termine li:last-child { border-bottom: var(--linie); }
+.termin {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s2) var(--s5);
+  padding-block: var(--s4);
+  align-items: baseline;
+}
+@media (min-width: 720px) {
+  .termin { grid-template-columns: minmax(190px, 0.32fr) minmax(0, 1fr) auto; }
+}
+.termin__tag {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: clamp(22px, 2.1vw, 31px);
+  font-weight: 500;
+  line-height: 1;
+  font-variant-numeric: lining-nums;
+}
+.termin__tag small {
+  display: block;
+  font-family: 'Archivo', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--zinn-500);
+  margin-top: var(--s2);
+}
+.termin__was { font-size: 18px; font-weight: 600; line-height: 1.3; }
+.termin__was span { display: block; font-weight: 400; font-size: 15px; color: var(--zinn-500); margin-top: var(--s2); max-width: min(52ch, 100%); }
+.termin__marke {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ziegel);
+  border: 1px solid currentColor;
+  padding: 5px var(--s2);
+  white-space: nowrap;
+  align-self: start;
+}
+
+/* Zeitleiste: die Geschichte von Doelitz, Jahr fuer Jahr. */
+.leiste { list-style: none; margin: 0; padding: 0; position: relative; }
+.leiste::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 1px;
+  background: var(--sandstein);
+}
+@media (min-width: 820px) { .leiste::before { left: 200px; } }
+.leiste li { position: relative; padding-left: var(--s5); padding-block: var(--s4); }
+@media (min-width: 820px) {
+  .leiste li {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: var(--s5);
+    padding-left: 0;
+  }
+  .leiste li > div:last-child { padding-left: var(--s5); }
+}
+.leiste li::before {
+  content: '';
+  position: absolute;
+  left: -4px; top: calc(var(--s4) + 10px);
+  width: 9px; height: 9px;
+  background: var(--kalk);
+  border: 1px solid var(--ziegel);
+}
+@media (min-width: 820px) { .leiste li::before { left: 196px; } }
+.leiste__jahr {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 500;
+  line-height: 1;
+  font-variant-numeric: lining-nums;
+  color: var(--ziegel);
+}
+.leiste p { font-size: 16px; margin-bottom: 0; }
+.leiste li[data-stark='true'] .leiste__jahr { font-size: clamp(34px, 4vw, 56px); font-weight: 700; }
+
+/* Verweis-Kacheln fuer Partner, bewusst ungleich breit. */
+.verweise { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.verweise li { border-top: var(--linie); }
+.verweise li:last-child { border-bottom: var(--linie); }
+.verweise a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding-block: var(--s4);
+  text-decoration: none;
+  transition: padding-left 0.4s var(--kurve), color 0.3s var(--kurve);
+}
+.verweise a:hover, .verweise a:focus-visible { padding-left: var(--s3); color: var(--ziegel); }
+.verweise__name { font-size: clamp(19px, 1.9vw, 26px); font-family: 'Bodoni Moda', Georgia, serif; font-weight: 500; }
+.verweise__was { font-size: 13.5px; color: var(--zinn-500); text-align: right; flex: none; max-width: 46%; }
+.verweise a:hover .verweise__was { color: var(--ziegel); }
+
+/* ---------- Karten (ungleich, kein Dreier-Raster) ------------------------- */
+
+.karten { display: grid; gap: var(--s5); grid-template-columns: 1fr; }
+@media (min-width: 860px) { .karten { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s6); } }
+.karte { border-top: 2px solid var(--zinn-900); padding-top: var(--s4); }
+.karte h3 { margin-bottom: var(--s3); }
+.karte p { font-size: 16.5px; }
+
+/* ---------- Zitat -------------------------------------------------------- */
+
+.zitat {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(25px, 3.4vw, 50px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  margin: 0;
+  max-width: min(22ch, 100%);
+}
+.zitat__quelle {
+  display: block;
+  font-family: 'Archivo', sans-serif;
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--zinn-500);
+  margin-top: var(--s5);
+}
+.flaeche-dunkel .zitat__quelle { color: var(--zinn-200); }
+
+/* ---------- Fuss --------------------------------------------------------- */
+
+.fuss {
+  background: var(--zinn-900);
+  color: var(--kalk);
+  padding-block: clamp(56px, 8vw, 112px) var(--s5);
+}
+.fuss a { color: inherit; }
+.fuss__raster {
+  display: grid;
+  gap: var(--s6) var(--s5);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 760px)  { .fuss__raster { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1080px) { .fuss__raster { grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)); gap: var(--s5); } }
+.fuss h2, .fuss h3 { margin-bottom: var(--s4); }
+.fuss__titel {
+  font-family: 'Archivo', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ziegel-hell);
+  margin: 0 0 var(--s4);
+}
+.fuss ul { list-style: none; margin: 0; padding: 0; }
+.fuss li { margin-bottom: var(--s3); font-size: 15px; line-height: 1.5; }
+.fuss li:last-child { margin-bottom: 0; }
+.fuss a[href] {
+  text-decoration: none;
+  background-image: linear-gradient(rgba(242, 238, 230, 0.4), rgba(242, 238, 230, 0.4));
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: color 0.3s var(--kurve), background-image 0.3s var(--kurve);
+}
+.fuss a[href]:hover, .fuss a[href]:focus-visible {
+  color: var(--ziegel-hell);
+  background-image: linear-gradient(var(--ziegel-hell), var(--ziegel-hell));
+}
+/* Auf dem Telefon werden aus Fusszeilen-Links echte Tippziele. */
+@media (max-width: 899px) {
+  .fuss li { margin-bottom: var(--s1); }
+  .fuss li a[href] { display: inline-block; padding-block: 11px; }
+}
+.fuss__marke { width: 132px; margin-bottom: var(--s4); filter: invert(1) brightness(1.45) grayscale(0.35); }
+.fuss__unten {
+  margin-top: clamp(48px, 6vw, 88px);
+  padding-top: var(--s4);
+  border-top: 1px solid rgba(242, 238, 230, 0.18);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s5);
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 13.5px;
+  color: var(--zinn-200);
+}
+.pflichtlinks { display: flex; flex-wrap: wrap; gap: var(--s3) var(--s4); }
+
+/* ---------- Schwebender Knopf -------------------------------------------- */
+
+.schwebe {
+  position: fixed;
+  right: clamp(16px, 3vw, 40px);
+  bottom: clamp(16px, 3vw, 40px);
+  z-index: 70;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s3);
+  min-height: 52px;
+  padding: var(--s3) var(--s4) var(--s3) var(--s3);
+  background: var(--ziegel);
+  color: var(--kalk);
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 600;
+  box-shadow: 0 10px 34px rgba(33, 38, 43, 0.3);
+  transition: transform 0.5s var(--kurve), opacity 0.4s var(--kurve), background 0.3s var(--kurve);
+}
+.schwebe:hover, .schwebe:focus-visible { background: var(--zinn-900); transform: translateY(-3px); }
+.schwebe[data-weg='true'] {
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  pointer-events: none;
+}
+/* Der Bogen als Zeichen im Knopf. */
+.schwebe__bogen {
+  flex: none;
+  width: 26px; height: 26px;
+  border: 1.5px solid currentColor;
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  position: relative;
+}
+.schwebe__bogen::after {
+  content: '';
+  position: absolute;
+  left: 50%; bottom: 0;
+  transform: translateX(-50%);
+  width: 8px; height: 12px;
+  border: 1.5px solid currentColor;
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+}
+@media (max-width: 520px) {
+  .schwebe { right: 12px; bottom: 12px; padding: var(--s2) var(--s3); font-size: 13.5px; }
+  .schwebe__bogen { width: 22px; height: 22px; }
+}
+
+/* ---------- Bewegung ----------------------------------------------------- */
+
+/* Verborgen wird nur, was das Skript auch wieder aufdecken kann: ohne
+   JavaScript fehlt die Klasse .js und alles steht sofort sichtbar da. */
+.js [data-auf] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.85s var(--kurve), transform 0.85s var(--kurve);
+  transition-delay: var(--verzug, 0ms);
+}
+.js [data-auf='ja'] { opacity: 1; transform: none; }
+
+/* Der Bogen oeffnet sich beim Scrollen. */
+.oeffnung { --auf: 0; }
+.oeffnung .bogen {
+  clip-path: inset(calc((1 - var(--auf)) * 22%) calc((1 - var(--auf)) * 13%) 0 calc((1 - var(--auf)) * 13%));
+  transition: clip-path 0.1s linear;
+}
+
+/* ---------- Zugaenglichkeit ---------------------------------------------- */
+
+:focus-visible {
+  outline: 3px solid var(--ziegel);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+.flaeche-dunkel :focus-visible, .fuss :focus-visible, .hero :focus-visible, .band :focus-visible {
+  outline-color: var(--ziegel-hell);
+}
+
+.sprung {
+  position: absolute;
+  left: var(--bund);
+  top: -200%;
+  z-index: 100;
+  background: var(--zinn-900);
+  color: var(--kalk);
+  padding: var(--s3) var(--s4);
+  text-decoration: none;
+  font-weight: 600;
+}
+.sprung:focus { top: var(--s2); }
+
+.nur-fuer-screenreader {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js [data-auf] { opacity: 1; transform: none; }
+  .oeffnung .bogen { clip-path: none; }
+}
+
+/* ---------- Rechtstexte (Stufe 3 setzt hier Impressum & Co. hinein) ------- */
+
+.rechtstext {
+  max-width: min(74ch, 100%);
+  padding-block: clamp(48px, 7vw, 104px);
+}
+.rechtstext h1 {
+  font-size: clamp(38px, 5.2vw, 72px);
+  margin-bottom: var(--s5);
+}
+.rechtstext h2 {
+  font-size: clamp(23px, 2.4vw, 32px);
+  margin: var(--s7) 0 var(--s4);
+  padding-top: var(--s4);
+  border-top: var(--linie);
+}
+.rechtstext h3 {
+  font-size: clamp(19px, 1.6vw, 23px);
+  margin: var(--s5) 0 var(--s3);
+}
+.rechtstext p { margin-bottom: var(--s4); max-width: min(68ch, 100%); }
+.rechtstext ul, .rechtstext ol { margin: 0 0 var(--s4); padding-left: var(--s4); max-width: min(68ch, 100%); }
+.rechtstext li { margin-bottom: var(--s2); }
+.rechtstext a {
+  color: var(--ziegel);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.rechtstext a:hover, .rechtstext a:focus-visible { color: var(--zinn-900); }
+.rechtstext dl { margin: 0 0 var(--s4); }
+.rechtstext dt { font-weight: 600; margin-top: var(--s3); }
+.rechtstext dd { margin: 0 0 var(--s2); }
+.rechtstext table { border-collapse: collapse; width: 100%; max-width: min(68ch, 100%); margin-bottom: var(--s4); }
+.rechtstext th, .rechtstext td { text-align: left; padding: var(--s2) var(--s3) var(--s2) 0; border-bottom: var(--linie); vertical-align: top; }
+
+/* ---------- Kleinigkeiten ------------------------------------------------ */
+
+/* Zeilenlaenge einer Ueberschrift in Zeichen - nie breiter als der Bildschirm. */
+[data-w="12"] { max-width: min(12ch, 100%); }
+[data-w="13"] { max-width: min(13ch, 100%); }
+[data-w="14"] { max-width: min(14ch, 100%); }
+[data-w="15"] { max-width: min(15ch, 100%); }
+[data-w="16"] { max-width: min(16ch, 100%); }
+[data-w="17"] { max-width: min(17ch, 100%); }
+[data-w="18"] { max-width: min(18ch, 100%); }
+[data-w="20"] { max-width: min(20ch, 100%); }
+
+.stapel > * + * { margin-top: var(--s4); }
+.stapel-weit > * + * { margin-top: var(--s5); }
+.stapel-eng > * + * { margin-top: var(--s3); }
+.mt-6 { margin-top: var(--s6); }
+.mt-5 { margin-top: var(--s5); }
+.mt-4 { margin-top: var(--s4); }
+.klebrig { position: sticky; top: 116px; }
+@media (max-width: 899px) { .klebrig { position: static; } }
+.eng { max-width: min(52ch, 100%); }
+
+::selection { background: var(--ziegel); color: var(--kalk); }

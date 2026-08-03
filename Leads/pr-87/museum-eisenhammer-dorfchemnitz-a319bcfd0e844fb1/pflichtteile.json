@@ -1,0 +1,104 @@
+{
+  "haus": {
+    "name": "Förderverein Eisenhammer Dorfchemnitz e.V.",
+    "rechtsform": "eingetragener Verein",
+    "adresse": {
+      "strasse": "Hauptstraße 11",
+      "plz": "09619",
+      "ort": "Dorfchemnitz"
+    },
+    "vertretung": "Ronny Schmidt, Vorsitzender",
+    "telefon": "0173 1574697",
+    "register": "Amtsgericht Chemnitz, VR 2975",
+    "aufsichtsbehoerde": "Landratsamt Mittelsachsen",
+    "verantwortlich": "Ronny Schmidt, Hauptstraße 11, 09619 Dorfchemnitz"
+  },
+  "datenschutz": {
+    "hoster": "GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA",
+    "kontaktformular": false
+  },
+  "barrierefreiheit": {
+    "vereinbarkeit": "teilweise",
+    "einschraenkungen": [
+      "Zur baulichen Zugänglichkeit des historischen Hammerwerks liegen keine geprüften Angaben vor; die Website weist stattdessen auf telefonische Auskunft hin.",
+      "Die Fotografien des Hammerwerks stammen von Wikimedia Commons; ausführliche Bildbeschreibungen über den Alternativtext hinaus fehlen."
+    ]
+  },
+  "bilder": [
+    {
+      "stamm": "hammerhaus",
+      "datei": "Eisenhammer Dorfchemnitz Gesamtansicht.jpg",
+      "urheber": "Miebner",
+      "lizenz": "CC BY-SA 3.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Eisenhammer_Dorfchemnitz_Gesamtansicht.jpg",
+      "bemerkung": "Ausschnitt und Farbanpassung"
+    },
+    {
+      "stamm": "hammerhaus-hoch",
+      "datei": "Eisenhammer Dorfchemnitz Gesamtansicht.jpg",
+      "urheber": "Miebner",
+      "lizenz": "CC BY-SA 3.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Eisenhammer_Dorfchemnitz_Gesamtansicht.jpg",
+      "bemerkung": "Hochformatiger Ausschnitt für schmale Bildschirme"
+    },
+    {
+      "stamm": "hammergeruest",
+      "datei": "Eisenhammer Dorfchemnitz Hammergerüst.jpg",
+      "urheber": "Miebner",
+      "lizenz": "CC BY-SA 3.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Eisenhammer_Dorfchemnitz_Hammerger%C3%BCst.jpg",
+      "bemerkung": "Ausschnitt und Farbanpassung"
+    },
+    {
+      "stamm": "wasserrad",
+      "datei": "Eisenhammer Dorfchemnitz.jpg",
+      "urheber": "Miebner",
+      "lizenz": "CC BY-SA 3.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Eisenhammer_Dorfchemnitz.jpg",
+      "bemerkung": "Ausschnitt und Farbanpassung"
+    },
+    {
+      "stamm": "hammerhof",
+      "datei": "Dorfchemnitz Eisenhammer 01.JPG",
+      "urheber": "Norbert Kaiser",
+      "lizenz": "CC BY-SA 2.5",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/2.5/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Dorfchemnitz_Eisenhammer_01.JPG",
+      "bemerkung": "Ausschnitt und Farbanpassung"
+    },
+    {
+      "stamm": "marke",
+      "datei": "marke.svg",
+      "urheber": "eigene Zeichnung für diese Website",
+      "lizenz": "CC0 1.0",
+      "lizenzUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "quelle": "Eigenes Werk",
+      "bemerkung": "Wortmarken-Signet (Amboss). Das Haus führt kein öffentlich verfügbares Logo."
+    }
+  ],
+  "schriften": [
+    {
+      "name": "Big Shoulders Display",
+      "urheber": "Patrick Bougie, Marc Foley (Google Fonts)",
+      "lizenz": "SIL Open Font License 1.1",
+      "lizenzUrl": "https://openfontlicense.org/",
+      "quelle": "https://fonts.google.com/specimen/Big+Shoulders+Display"
+    },
+    {
+      "name": "Newsreader",
+      "urheber": "Production Type (Google Fonts)",
+      "lizenz": "SIL Open Font License 1.1",
+      "lizenzUrl": "https://openfontlicense.org/",
+      "quelle": "https://fonts.google.com/specimen/Newsreader"
+    }
+  ]
+}
