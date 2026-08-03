@@ -89,25 +89,45 @@ aufgerufen.
 
 ## D — Lücken: was bewusst NICHT auf der Seite steht
 
-1. **Trägerschaft und gesetzliche Vertretung.** Es ließ sich nicht belegen, wer
-   Träger des Museums ist (Stadt Kroppenstedt, Verbandsgemeinde, Verein). Das Haus
-   wird auf der amtlichen Website der Verbandsgemeinde Westliche Börde als deren
-   Museum geführt (VG-Museum), die Verbandsgemeinde sitzt Marktstraße 7, 39397
-   Gröningen und wird vom Verbandsgemeindebürgermeister Fabian Stankewitz vertreten
-   (VG-Impressum). Ob daraus die Trägerschaft folgt, ist nicht belegt. Deshalb steht
-   in `pflichtteile.json` kein Vertretungsfeld; die Angabe muss vom Haus kommen.
+1. **Trägerschaft und gesetzliche Vertretung.** *(am 03.08.2026 ein zweites Mal
+   recherchiert, Ergebnis unverändert.)* Es ließ sich nicht belegen, wer Träger des
+   Museums ist. Ohne Trägerangabe geprüft: amtliche Museumsseite und Museen-Übersicht
+   der Verbandsgemeinde, [museen.de](https://museen.de/heimatmuseum-kroppenstedt.html),
+   [Museumsverband Sachsen-Anhalt](http://www.mv-sachsen-anhalt.de/main.pl?id=73&lang=de&ort=Kroppenstedt&page=mus_ort),
+   [Wikipedia](https://de.wikipedia.org/wiki/Kroppenstedt) und die
+   [Bekanntmachungen der Stadt Kroppenstedt](https://www.westlicheboerde.de/B%C3%BCrger-Gemeinde/Bekanntmachungen/Kroppenstedt/).
+   Es bleiben genau zwei belegte, aber unbestätigte Kandidaten:
+
+   - **Stadt Kroppenstedt**, vertreten durch Bürgermeisterin **Anja Krüger**
+     (gewählt am 11.05.2025), Dienstanschrift Marktstraße 7, 39397 Gröningen —
+     [Amtliche Seite der Bürgermeisterin](https://www.westlicheboerde.de/B%C3%BCrger-Gemeinde/Bekanntmachungen/Kroppenstedt/index.php?object=tx,2991.1&ModID=9&FID=2991.48.1&NavID=2991.194&La=1),
+     [Wikipedia](https://de.wikipedia.org/wiki/Kroppenstedt).
+   - **Verbandsgemeinde Westliche Börde**, Marktstraße 7, 39397 Gröningen, vertreten
+     durch Verbandsgemeindebürgermeister **Fabian Stankewitz** (VG-Impressum).
+
+   Für die Verbandsgemeinde spricht, dass sie das Museum auf ihrer amtlichen Website
+   als eigenes Museum führt und dort Heike Wolter als *Museumsmitarbeiterin*, also
+   Beschäftigte, nennt. Für die Stadt spricht, dass Kultureinrichtungen in
+   Sachsen-Anhalt regelmäßig bei der Mitgliedsgemeinde verbleiben. Weil eine falsche
+   Trägerangabe im Impressum schlechter wäre als eine fehlende, steht in
+   `pflichtteile.json` weiterhin kein Vertretungsfeld; die Angabe muss vom Haus kommen.
+   Sobald sie vorliegt, genügt dort das Feld `vertretung` und ein erneuter Lauf von
+   Stufe 3.
 2. **Eintrittspreise.** Keine öffentliche Angabe gefunden. Die Seite nennt keine
    Preise, sondern verweist auf die Telefonnummer.
 3. **Barrierefreiheit vor Ort.** Keine geprüfte Angabe zu Stufen, Türbreiten oder
    Zugängen. Die Besuchsseite sagt das offen und bittet um einen Anruf vorab.
 4. **Parken.** Keine belegte Angabe zu Parkplätzen; nur der aus den Fotos ersichtliche
    Hinweis, dass die Zufahrt am Kirchhof gepflastert und eng ist.
-5. **Widersprüchliche Öffnungszeiten.** Die amtliche Museumsseite nennt Di/Mi/Fr
-   9–13 Uhr; das ist übernommen. Verzeichnisportale nennen abweichend
-   Mo–Do 10–16 Uhr und Fr 10–12 bzw. 10–13 Uhr
-   ([museen.de](https://museen.de/heimatmuseum-kroppenstedt.html),
+5. **Widersprüchliche Öffnungszeiten.** *(am 03.08.2026 ein zweites Mal geprüft,
+   beide Seiten unverändert.)* Die amtliche Museumsseite nennt Di/Mi/Fr 9–13 Uhr;
+   das ist übernommen, weil es die einzige vom Trägerumfeld selbst gepflegte Quelle
+   ist. Verzeichnisportale nennen abweichend Mo–Do 10–16 Uhr und Fr 10–12 bzw.
+   10–13 Uhr ([museen.de](https://museen.de/heimatmuseum-kroppenstedt.html),
    [ortsdienst.de](https://www.ortsdienst.de/sachsen-anhalt/boerde/kroppenstedt/museum/)).
-   Vor Veröffentlichung durch das Haus bestätigen lassen.
+   Die Besuchsseite macht den Stand seit dieser Runde sichtbar („Stand der Zeiten:
+   3. August 2026“) und empfiehlt vor weiter Anfahrt den Anruf. Vor Veröffentlichung
+   durch das Haus bestätigen lassen.
 6. **Logo.** Das Haus führt ein gemaltes Auslegerschild „Heimat Museum“ am Gebäude,
    aber kein frei verfügbares Logo oder Wappen. Die Seite verwendet deshalb eine
    eigene Wortmarke aus dem Schriftsystem.
