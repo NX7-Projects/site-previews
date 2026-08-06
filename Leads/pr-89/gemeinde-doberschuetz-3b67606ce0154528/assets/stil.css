@@ -633,6 +633,21 @@ hr {
   color: var(--stein);
   font-weight: 400;
 }
+/* Das Wahlergebnis benutzt denselben Tabellenzuschnitt wie die Oeffnungszeiten,
+   hat aber lange Listennamen. Ohne Umbruch schiebt "Unabhaengige Waehler-
+   vereinigung der Ortschaft Moertitz" die Spalten Stimmen und Sitze auf dem
+   Telefon aus dem Bild - die Zahlen waren dort schlicht nicht zu sehen. */
+.zeiten--wahl th[scope="row"] {
+  width: auto;
+  white-space: normal;
+  padding-right: var(--r2);
+  hyphens: auto;
+}
+.zeiten--wahl th[scope="col"] + th,
+.zeiten--wahl td {
+  width: 4.5em;
+  white-space: nowrap;
+}
 
 .kontaktliste {
   list-style: none;
