@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gemeinde Doberschütz – Rathaus, Bürgerservice, Ortsteile</title>
+<meta name="description" content="Entwurf einer neuen Website für die Gemeinde Doberschütz im Landkreis Nordsachsen: Öffnungszeiten des Rathauses, Ansprechpartner, Anliegen von A bis Z, die sechs Ortschaften.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#15211c">
+<link rel="stylesheet" href="assets/stil.css">
+<link rel="preload" href="assets/schrift/newsreader-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/schrift/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+
+<a class="sprung" href="#inhalt">Zum Inhalt springen</a>
+
+<div class="entwurf">
+  <div class="entwurf__inhalt">
+    <span class="entwurf__marke">Entwurf</span>
+    <span>Unverbindlicher Entwurf. Dies ist <strong>NICHT</strong> die amtliche Website der Gemeinde Doberschütz. Amtlich gilt <a href="https://www.doberschuetz.de/" rel="external">www.doberschuetz.de</a>.</span>
+  </div>
+</div>
+
+<header class="kopf">
+  <div class="kopf__inhalt">
+    <a class="marke" href="./">
+      <span class="marke__name">Doberschütz</span>
+      <span class="marke__zusatz">Gemeinde im Landkreis Nordsachsen</span>
+    </a>
+    <button class="nav-schalter" type="button" aria-expanded="false" aria-controls="hauptnavigation">
+      <span class="nav-schalter__balken" aria-hidden="true"></span> Menü
+    </button>
+    <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation">
+      <a href="rathaus.html">Rathaus</a>
+      <a href="anliegen.html">Anliegen</a>
+      <a href="ortsteile.html">Ortsteile</a>
+      <a href="gemeinderat.html">Gemeinderat</a>
+      <a href="waermeplanung.html">Wärmeplanung</a>
+      <a href="vereine.html">Vereine</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+
+  <!-- Erster Bildschirm: Bürgerservice zuerst, Bild danach -->
+  <section class="hero">
+    <div class="huelle">
+      <div class="hero__raster">
+        <div>
+          <h1 class="hero__titel">Gemeinde Doberschütz</h1>
+          <p class="hero__zusatz">Sechs Ortschaften, elf Ortsteile, 77,79 Quadratkilometer am Südrand der Dübener Heide. Eine Verwaltung für alle.</p>
+
+          <ul class="schnell" aria-label="Die häufigsten Anliegen">
+            <li><a href="anliegen.html#melden">Anmelden &amp; Ausweis</a></li>
+            <li><a href="anliegen.html#abfall">Abfall &amp; Sperrmüll</a></li>
+            <li><a href="anliegen.html#formulare">Formulare</a></li>
+            <li><a href="rathaus.html#ansprechpartner">Ansprechpartner</a></li>
+          </ul>
+
+          <div class="rathauskarte" id="rathaus-kurz">
+            <h2>Rathaus Doberschütz</h2>
+
+            <p class="status" data-status>
+              <span class="status__punkt" aria-hidden="true"></span>
+              <span data-status-text>Montag 9–12 Uhr · Dienstag 9–12 und 13–17:30 Uhr · Donnerstag 9–12 und 13–15 Uhr</span>
+            </p>
+
+            <table class="zeiten">
+              <caption class="klein" style="text-align:left;padding-bottom:8px;">Öffnungszeiten der Verwaltung</caption>
+              <tbody>
+                <tr data-tag="1"><th scope="row">Montag</th><td>9:00 – 12:00 Uhr</td></tr>
+                <tr data-tag="2"><th scope="row">Dienstag</th><td>9:00 – 12:00 Uhr<br>13:00 – 17:30 Uhr</td></tr>
+                <tr data-tag="3"><th scope="row">Mittwoch</th><td class="zu">geschlossen</td></tr>
+                <tr data-tag="4"><th scope="row">Donnerstag</th><td>9:00 – 12:00 Uhr<br>13:00 – 15:00 Uhr</td></tr>
+                <tr data-tag="5"><th scope="row">Freitag</th><td class="zu">geschlossen</td></tr>
+              </tbody>
+            </table>
+
+            <p class="klein">Außerhalb der Öffnungszeiten sind Termine nach telefonischer Absprache möglich. Feiertage sind in der Anzeige oben nicht berücksichtigt.</p>
+
+            <ul class="kontaktliste">
+              <li><span class="etikett">Anschrift</span> <span>Breite Straße 17<br>04838 Doberschütz</span></li>
+              <li><span class="etikett">Telefon</span> <span><a href="tel:+49342445400">034244 5400</a></span></li>
+              <li><span class="etikett">E-Mail</span> <span><a href="mailto:info@doberschuetz.de">info@doberschuetz.de</a></span></li>
+              <li><span class="etikett">Fax</span> <span>034244 50344</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hero__bild">
+          <img src="assets/bilder/wegestein-bunitz-1600.jpg"
+               srcset="assets/bilder/wegestein-bunitz-520.jpg 520w, assets/bilder/wegestein-bunitz-900.jpg 900w, assets/bilder/wegestein-bunitz-1600.jpg 1600w"
+               sizes="(max-width: 960px) 100vw, 45vw"
+               width="1600" height="1200"
+               alt="Feldweg zwischen Acker und Kiefernwald bei Bunitz; links am Wegrand steht ein niedriger, verwitterter Wegestein aus Sandstein, dahinter am Horizont die Häuser des Ortes.">
+          <p class="bildzeile"><b>Wegestein bei Bunitz.</b> Zwei solcher Steine stehen als Kulturdenkmal in der Gemeinde – Bunitz und Mölbitz. Sie taten zwischen den Dörfern das, was diese Seite tun soll: sagen, wo es langgeht.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Häufigste Anliegen -->
+  <section class="bahn bahn--eng auf" id="anliegen">
+    <div class="huelle">
+      <p class="ortsmarke">Was möchten Sie erledigen?</p>
+      <h2>Die häufigsten Wege</h2>
+      <p class="vorspann">Sechs Anliegen machen den größten Teil der Anrufe im Rathaus aus. Hier steht, wer zuständig ist und wohin Sie müssen.</p>
+
+      <div class="wegweiser">
+        <a class="weg" href="anliegen.html#melden">
+          <span class="weg__text">
+            <span class="weg__name">Anmelden, ummelden, Personalausweis</span>
+            <span class="weg__ziel">Einwohnermeldeamt, Pass- und Ordnungsamt · Heike Peterson · 034244 54016</span>
+          </span>
+          <span class="weg__pfeil" aria-hidden="true">→</span>
+        </a>
+
+        <a class="weg" href="https://gewerbe.buergerdienste-online.de/webclient/app/m/14730080" rel="external">
+          <span class="weg__text">
+            <span class="weg__name">Gewerbe anmelden</span>
+            <span class="weg__ziel">Online über die Bürgerdienste – die Gemeinde Doberschütz ist dort hinterlegt.</span>
+            <span class="weg__aussen">Externes Portal</span>
+          </span>
+          <span class="weg__pfeil" aria-hidden="true">→</span>
+        </a>
+
+        <a class="weg" href="anliegen.html#abfall">
+          <span class="weg__text">
+            <span class="weg__name">Abfall, Tourenplan, Sperrmüll</span>
+            <span class="weg__ziel">Zuständig ist der Landkreis Nordsachsen. Sperrmüll wird auf Abruf abgeholt.</span>
+          </span>
+          <span class="weg__pfeil" aria-hidden="true">→</span>
+        </a>
+
+        <a class="weg" href="anliegen.html#hundesteuer">
+          <span class="weg__text">
+            <span class="weg__name">Hund an- oder abmelden</span>
+            <span class="weg__ziel">Kämmerei · Ina Glatte · 034244 54022 · Formulare zum Ausdrucken</span>
+          </span>
+          <span class="weg__pfeil" aria-hidden="true">→</span>
+        </a>
+
+        <a class="weg" href="anliegen.html#formulare">
+          <span class="weg__text">
+            <span class="weg__name">Formulare der Gemeinde</span>
+            <span class="weg__ziel">Bauverwaltung, Meldeamt, Gewerbe, Steuern – gesammelt an einer Stelle.</span>
+          </span>
+          <span class="weg__pfeil" aria-hidden="true">→</span>
+        </a>
+
+        <a class="weg" href="rathaus.html#ansprechpartner">
+          <span class="weg__text">
+            <span class="weg__name">Die richtige Person finden</span>
+            <span class="weg__ziel">Alle Ansprechpartner der Verwaltung mit Durchwahl und E-Mail.</span>
+          </span>
+          <span class="weg__pfeil" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Die Orte -->
+  <section class="bahn bahn--sand auf" id="orte">
+    <div class="huelle">
+      <p class="ortsmarke">Sechs Ortschaften, elf Ortsteile</p>
+      <div class="raster--breit raster">
+        <div>
+          <h2>Eine Gemeinde aus lauter Dörfern</h2>
+          <p>Battaune, Doberschütz, Mörtitz, Paschwitz, Sprotta und Wöllnau haben sich am 1. Januar 1996 zur Gemeinde Doberschütz zusammengeschlossen. Jede Ortschaft hat bis heute ihren eigenen Ortschaftsrat.</p>
+          <p><a href="ortsteile.html">Alle Ortsteile mit Ortschaftsrat ansehen</a></p>
+        </div>
+        <div class="raster raster--3">
+          <a class="ortkarte" href="ortsteile.html#battaune">
+            <span class="ortkarte__name">Battaune</span>
+            <span class="ortkarte__teile">Dorfkirche mit spätgotischem Schnitzaltar</span>
+          </a>
+          <a class="ortkarte" href="ortsteile.html#doberschuetz">
+            <span class="ortkarte__name">Doberschütz</span>
+            <span class="ortkarte__teile">Sitz der Verwaltung, Grundschule, Haltepunkt der S4</span>
+          </a>
+          <a class="ortkarte" href="ortsteile.html#moertitz">
+            <span class="ortkarte__name">Mörtitz</span>
+            <span class="ortkarte__teile">mit Mensdorf und Rote Jahne</span>
+          </a>
+          <a class="ortkarte" href="ortsteile.html#paschwitz">
+            <span class="ortkarte__name">Paschwitz</span>
+            <span class="ortkarte__teile">mit Bunitz und Mölbitz · Turmwindmühle Friedemann</span>
+          </a>
+          <a class="ortkarte" href="ortsteile.html#sprotta">
+            <span class="ortkarte__name">Sprotta</span>
+            <span class="ortkarte__teile">mit Sprotta-Siedlung · Kiessee als Naherholungsgebiet</span>
+          </a>
+          <a class="ortkarte" href="ortsteile.html#woellnau">
+            <span class="ortkarte__name">Wöllnau</span>
+            <span class="ortkarte__teile">mit Winkelmühle · Denkmalswald, Waldfriedhof</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aus dem Rathaus -->
+  <section class="bahn bahn--tinte auf" id="aktuell">
+    <div class="huelle">
+      <p class="ortsmarke">Aus dem Rathaus</p>
+      <h2>Bekanntmachungen und Sitzungen</h2>
+      <div class="raster raster--2" style="margin-top:var(--r4)">
+        <div>
+          <h3>Amtsblatt der Gemeinde</h3>
+          <p>Das Amtsblatt erscheint seit dem 14. August 2015 im vierzehntägigen Rhythmus, elektronisch und auf Papier. Rechtlich verbindlich ist nach der Bekanntmachungssatzung die elektronische Fassung. Es lässt sich als Newsletter abonnieren.</p>
+          <p><a href="gemeinderat.html#bekanntmachungen">Zu den Bekanntmachungen</a></p>
+        </div>
+        <div>
+          <h3>Ratsinformationssystem</h3>
+          <p>Tagesordnungen, Beschlussvorlagen und die Bekanntgabe gefasster Beschlüsse stehen online. Der Gemeinderat tagt öffentlich.</p>
+          <p><a href="https://doberschuetz.ris-portal.de" rel="external">doberschuetz.ris-portal.de</a> · <a href="gemeinderat.html">Gemeinderat und Ausschüsse</a></p>
+        </div>
+      </div>
+
+      <div class="hinweis" style="margin-top:var(--r4)">
+        <p class="klein" style="margin:0"><strong>Hinweis zu diesem Entwurf:</strong> Amtliche Bekanntmachungen und Gebührensätze sind hier bewusst nicht übernommen. Sie haben Rechtswirkung und gehören in die Hand der Verwaltung. Der Entwurf zeigt nur, wo und wie sie stehen würden.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wärmeplanung -->
+  <section class="bahn auf" id="waerme">
+    <div class="huelle">
+      <div class="raster raster--breit">
+        <div>
+          <p class="ortsmarke">Läuft gerade</p>
+          <h2>Kommunale Wärmeplanung</h2>
+        </div>
+        <div>
+          <p class="vorspann">Die Gemeinde muss nach dem Wärmeplanungsgesetz einen Wärmeplan aufstellen. Bund und Land fördern ihn, ein beauftragter Dienstleisterverbund erarbeitet ihn – und die Zwischenergebnisse werden veröffentlicht, damit Sie sie kommentieren können.</p>
+          <p><a href="waermeplanung.html">Was das für Ihr Haus bedeutet</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Termine -->
+  <section class="bahn bahn--sand auf" id="termine">
+    <div class="huelle">
+      <p class="ortsmarke">In den Orten</p>
+      <div class="raster raster--breit">
+        <div>
+          <h2>Nächste Termine</h2>
+          <p class="klein">Aus dem Veranstaltungskalender der Gemeinde. Ohne Gewähr – der amtliche Kalender steht auf <a href="https://www.doberschuetz.eu/dob/veranstaltungen/" rel="external">doberschuetz.eu</a>.</p>
+        </div>
+        <div>
+          <ul class="termine">
+            <li><time datetime="2026-08-22">Sa, 22. August</time><span>Dorffest Sprotta <span class="ort">bis Sonntag, 23. August · Sprotta</span></span></li>
+            <li><time datetime="2026-08-29">Sa, 29. August</time><span>Flohmarkt im Gut Heideck <span class="ort">Sprotta-Siedlung</span></span></li>
+            <li><time datetime="2026-08-30T15:00">So, 30. August</time><span>Dorfkonzert „Die Schwarzen Optimisten“ <span class="ort">15:00 Uhr · Doberschütz</span></span></li>
+            <li><time datetime="2026-09-04">Fr, 4. September</time><span>Stoppelfest mit Fackelumzug <span class="ort">bis Sonntag, 6. September · Doberschütz</span></span></li>
+            <li><time datetime="2026-09-17T19:30">Do, 17. September</time><span>Sitzung des Gemeinderates <span class="ort">19:30 Uhr · öffentlich</span></span></li>
+          </ul>
+          <p style="margin-top:var(--r3)"><a href="vereine.html#termine">Alle Termine und die Vereine der Gemeinde</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zuständigkeit außerhalb -->
+  <section class="bahn bahn--eng auf" id="woanders">
+    <div class="huelle">
+      <p class="ortsmarke">Nicht bei uns</p>
+      <h2>Dafür ist jemand anderes zuständig</h2>
+      <p class="vorspann">Eine Gemeinde mit 3.985 Einwohnern erledigt nicht alles selbst. Diese Wege führen aus dem Rathaus heraus – und sind trotzdem der kürzeste Weg zum Ziel.</p>
+
+      <div class="wegweiser">
+        <a class="weg" href="https://www.landkreis-nordsachsen.de/" rel="external">
+          <span class="weg__text">
+            <span class="weg__name">Landkreis Nordsachsen</span>
+            <span class="weg__ziel">Kfz-Zulassung, Führerschein, Abfallwirtschaft, Bauaufsicht, Jugend- und Sozialamt</span>
+            <span class="weg__aussen">Externe Seite</span>
+          </span>
+          <span class="weg__pfeil" aria-hidden="true">→</span>
+        </a>
+        <a class="weg" href="https://amt24.sachsen.de/" rel="external">
+          <span class="weg__text">
+            <span class="weg__name">Amt24 des Freistaates Sachsen</span>
+            <span class="weg__ziel">Behördenwegweiser und Online-Anträge des Landes – die Gemeinde Doberschütz ist dort verzeichnet.</span>
+            <span class="weg__aussen">Externe Seite</span>
+          </span>
+          <span class="weg__pfeil" aria-hidden="true">→</span>
+        </a>
+        <a class="weg" href="https://cms.sachsen.schule/gsdobers/willkommen" rel="external">
+          <span class="weg__text">
+            <span class="weg__name">Grundschule Doberschütz</span>
+            <span class="weg__ziel">Die erste Naturparkschule des Naturpark Dübener Heide e.&nbsp;V. – mit eigener Seite</span>
+            <span class="weg__aussen">Externe Seite</span>
+          </span>
+          <span class="weg__pfeil" aria-hidden="true">→</span>
+        </a>
+        <a class="weg" href="https://geoportal.sachsen.de/?map=eeddf07a-7939-49e3-8b11-1742f9679e12" rel="external">
+          <span class="weg__text">
+            <span class="weg__name">Amtliche Karte der Gemeinde</span>
+            <span class="weg__ziel">Geoportal Sachsen mit Flurstücken, Grenzen und Luftbild</span>
+            <span class="weg__aussen">Externe Seite</span>
+          </span>
+          <span class="weg__pfeil" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<a class="kontaktknopf" aria-label="Rathaus erreichen: Telefon, E-Mail und Öffnungszeiten" href="rathaus.html#kontakt">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.36 2.3.55 3.6.55a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.55 3.6a1 1 0 0 1-.25 1z"/></svg>
+  <span class="kontaktknopf__text">Rathaus erreichen</span>
+</a>
+
+<footer class="fuss">
+  <div class="huelle">
+    <div class="fuss__raster">
+      <div>
+        <h2>Gemeinde Doberschütz</h2>
+        <p>Breite Straße 17<br>04838 Doberschütz</p>
+        <p><a href="tel:+49342445400">034244 5400</a><br><a href="mailto:info@doberschuetz.de">info@doberschuetz.de</a></p>
+      </div>
+      <div>
+        <h3>Geöffnet</h3>
+        <ul>
+          <li>Montag 9–12 Uhr</li>
+          <li>Dienstag 9–12 und 13–17:30 Uhr</li>
+          <li>Donnerstag 9–12 und 13–15 Uhr</li>
+          <li>Mittwoch und Freitag geschlossen</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Häufig gebraucht</h3>
+        <ul>
+          <li><a href="anliegen.html">Anliegen von A bis Z</a></li>
+          <li><a href="rathaus.html#ansprechpartner">Ansprechpartner</a></li>
+          <li><a href="anliegen.html#formulare">Formulare</a></li>
+          <li><a href="gemeinderat.html#bekanntmachungen">Bekanntmachungen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Nach außen</h3>
+        <ul>
+          <li><a href="https://www.doberschuetz.de/" rel="external">Amtliche Website der Gemeinde</a></li>
+          <li><a href="https://doberschuetz.ris-portal.de" rel="external">Ratsinformationssystem</a></li>
+          <li><a href="https://www.landkreis-nordsachsen.de/" rel="external">Landkreis Nordsachsen</a></li>
+          <li><a href="https://amt24.sachsen.de/" rel="external">Amt24 Sachsen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fuss__unten">
+      <nav class="pflicht-links" aria-label="Rechtliche Hinweise">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="barrierefreiheit.html">Barrierefreiheit</a>
+      <a href="bildnachweis.html">Bildnachweise</a>
+    </nav>
+      <p>Unverbindlicher Entwurf einer Website, erstellt ohne Auftrag der Gemeinde Doberschütz. Dies ist nicht die amtliche Website der Gemeinde. Amtlich gilt <a href="https://www.doberschuetz.de/" rel="external">www.doberschuetz.de</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/seite.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+{
+  "haus": {
+    "name": "Gemeinde Doberschütz",
+    "rechtsform": "Körperschaft des öffentlichen Rechts",
+    "adresse": {
+      "strasse": "Breite Straße 17",
+      "plz": "04838",
+      "ort": "Doberschütz"
+    },
+    "vertretung": "Bürgermeister Andreas Mählmann",
+    "telefon": "+49 34244 5400",
+    "email": "info@doberschuetz.de",
+    "verantwortlich": "Andreas Mählmann, Bürgermeister, Breite Straße 17, 04838 Doberschütz"
+  },
+  "datenschutz": {
+    "hoster": "GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA",
+    "kontaktformular": false
+  },
+  "barrierefreiheit": {
+    "vereinbarkeit": "teilweise",
+    "einschraenkungen": [
+      "Die von dieser Seite verlinkten Formulare und Pläne liegen als PDF auf der amtlichen Website der Gemeinde. Diese PDF-Dokumente sind nicht barrierefrei; die Gemeinde weist darauf in ihrer eigenen Erklärung zur Barrierefreiheit selbst hin.",
+      "Der Belegungsplan der Turnhalle ist nur als PDF verfügbar und in diesem Entwurf nicht als HTML-Tabelle nachgebildet.",
+      "Inhalte in Leichter Sprache und in Gebärdensprache sind in diesem Entwurf noch nicht enthalten.",
+      "Die Seite wurde nach WCAG 2.2 AA gebaut, aber nicht durch eine unabhängige Prüfstelle getestet."
+    ]
+  },
+  "bilder": [
+    {
+      "stamm": "wegestein-bunitz",
+      "datei": "Bunitz Wegestein-01.jpg",
+      "urheber": "Radler59",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Bunitz_Wegestein-01.jpg",
+      "bearbeitung": "auf Webgröße verkleinert"
+    },
+    {
+      "stamm": "anger-doberschuetz",
+      "datei": "DoberschützAngerO.JPG",
+      "urheber": "Jwaller",
+      "lizenz": "CC BY-SA 3.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Dobersch%C3%BCtzAngerO.JPG",
+      "bearbeitung": "auf Webgröße verkleinert"
+    },
+    {
+      "stamm": "haltepunkt-doberschuetz",
+      "datei": "DoberschützBf.JPG",
+      "urheber": "Jwaller",
+      "lizenz": "CC BY-SA 3.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Dobersch%C3%BCtzBf.JPG",
+      "bearbeitung": "auf Webgröße verkleinert"
+    },
+    {
+      "stamm": "muehle-paschwitz",
+      "datei": "2017-06-05 Mühle Friedemann Paschwitz (Sachsen).jpg",
+      "urheber": "YvoBentele",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:2017-06-05_M%C3%BChle_Friedemann_Paschwitz_(Sachsen).jpg",
+      "bearbeitung": "auf Webgröße verkleinert"
+    },
+    {
+      "stamm": "kirche-battaune",
+      "datei": "Battaune Kirche.jpg",
+      "urheber": "Radler59",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Battaune_Kirche.jpg",
+      "bearbeitung": "auf Webgröße verkleinert"
+    },
+    {
+      "stamm": "denkmalswald-winkelmuehle",
+      "datei": "Denkmalswald Winkelmühle (1).jpg",
+      "urheber": "Lutz Lange",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Denkmalswald_Winkelm%C3%BChle_(1).jpg",
+      "bearbeitung": "auf Webgröße verkleinert"
+    },
+    {
+      "stamm": "gut-heideck-sprotta",
+      "datei": "Sprotta-Siedlung Gut Heideck Villa.jpg",
+      "urheber": "Radler59",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Sprotta-Siedlung_Gut_Heideck_Villa.jpg",
+      "bearbeitung": "auf Webgröße verkleinert"
+    }
+  ]
+}

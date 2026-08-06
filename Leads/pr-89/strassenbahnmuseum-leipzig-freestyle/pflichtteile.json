@@ -1,0 +1,117 @@
+{
+  "haus": {
+    "name": "Arbeitsgemeinschaft „Historische Nahverkehrsmittel Leipzig“ e. V.",
+    "rechtsform": "eingetragener Verein, gemeinnützig anerkannt seit 1991",
+    "adresse": {
+      "strasse": "Apelstraße 1",
+      "plz": "04129",
+      "ort": "Leipzig"
+    },
+    "vertretung": "Jürgen Süß (1. Vorsitzender) und Thomas Lehnert (2. Vorsitzender), jeweils einzelvertretungsberechtigt",
+    "telefon": "+49 341 3928904",
+    "telefax": "+49 3212 2780633",
+    "email": "info@strassenbahnmuseum.de",
+    "register": "Amtsgericht Leipzig, Vereinsregister VR 1324",
+    "umsatzsteuerId": "DE213219563",
+    "verantwortlich": "Vorstand, vertreten durch Jürgen Süß und Thomas Lehnert, Apelstraße 1, 04129 Leipzig"
+  },
+  "datenschutz": {
+    "hoster": "GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA",
+    "kontaktformular": false,
+    "hinweis": "Die Seite bindet keine externen Ressourcen ein: Schriften, Bilder, CSS und JavaScript liegen auf demselben Server. Es werden keine Cookies gesetzt, kein Tracking, keine Analysedienste, keine Karten- oder Video-Einbettungen."
+  },
+  "barrierefreiheit": {
+    "vereinbarkeit": "teilweise",
+    "einschraenkungen": [
+      "Die Besucherordnung des Museums ist nur als PDF-Dokument verfügbar; dieses Dokument wird nicht von uns erstellt und ist nicht barrierefrei.",
+      "Zur baulichen Barrierefreiheit des Museumsgeländes liegen keine geprüften Angaben vor. Die Seite weist deshalb auf telefonische oder schriftliche Rückfrage hin, statt ungeprüfte Angaben zu machen."
+    ]
+  },
+  "bilder": [
+    {
+      "stamm": "museumshalle-oeffnungstag",
+      "datei": "J36 237 Bw Wittenberger Straße, Halle I.jpg",
+      "urheber": "Falk2",
+      "lizenz": "CC BY-SA 3.0 DE",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:J36_237_Bw_Wittenberger_Stra%C3%9Fe,_Halle_I.jpg"
+    },
+    {
+      "stamm": "triebwagen-308",
+      "datei": "J36 219 Bw Wittenberger Straße, EB 308.jpg",
+      "urheber": "Falk2",
+      "lizenz": "CC BY-SA 3.0 DE",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:J36_219_Bw_Wittenberger_Stra%C3%9Fe,_EB_308.jpg"
+    },
+    {
+      "stamm": "triebwagen-349",
+      "datei": "J36 225 Bw Wittenberger Straße, ET 349.jpg",
+      "urheber": "Falk2",
+      "lizenz": "CC BY-SA 3.0 DE",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:J36_225_Bw_Wittenberger_Stra%C3%9Fe,_ET_349.jpg"
+    },
+    {
+      "stamm": "innenraum-triebwagen-500",
+      "datei": "J36 227 ET 500, Innenraum.jpg",
+      "urheber": "Falk2",
+      "lizenz": "CC BY-SA 3.0 DE",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:J36_227_ET_500,_Innenraum.jpg"
+    },
+    {
+      "stamm": "fahrleitungsrosetten",
+      "datei": "J36 239 Fahrleitungsrosetten.jpg",
+      "urheber": "Falk2",
+      "lizenz": "CC BY-SA 3.0 DE",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:J36_239_Fahrleitungsrosetten.jpg"
+    },
+    {
+      "stamm": "gelenkwagen-apelstrasse",
+      "datei": "J36 211 Apelstraße, ET 1206.jpg",
+      "urheber": "Falk2",
+      "lizenz": "CC BY-SA 3.0 DE",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:J36_211_Apelstra%C3%9Fe,_ET_1206.jpg"
+    },
+    {
+      "stamm": "strassenbahnhof-wittenberger-strasse",
+      "datei": "Leipzig Strbf Wittenberger Strasse.jpg",
+      "urheber": "Joeb07",
+      "lizenz": "CC BY 3.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by/3.0/deed.de",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Leipzig_Strbf_Wittenberger_Strasse.jpg"
+    }
+  ],
+  "schriften": [
+    {
+      "name": "Fraunces",
+      "urheber": "The Fraunces Project Authors",
+      "lizenz": "SIL Open Font License 1.1",
+      "lizenzUrl": "https://github.com/undercasetype/Fraunces",
+      "lizenztext": "assets/schrift/OFL-Fraunces.txt",
+      "seite": "https://fonts.google.com/specimen/Fraunces"
+    },
+    {
+      "name": "Inter",
+      "urheber": "The Inter Project Authors",
+      "lizenz": "SIL Open Font License 1.1",
+      "lizenzUrl": "https://github.com/rsms/inter",
+      "lizenztext": "assets/schrift/OFL-Inter.txt",
+      "seite": "https://fonts.google.com/specimen/Inter"
+    }
+  ],
+  "hinweise": {
+    "bildvarianten": "Jedes Bild liegt zusätzlich als verkleinerte Fassung mit dem Suffix -900 vor (zum Beispiel triebwagen-308-900.jpg). Urheber und Lizenz sind identisch; die Bilder wurden ausschließlich in der Größe angepasst.",
+    "bildordner": "assets/bilder/"
+  }
+}

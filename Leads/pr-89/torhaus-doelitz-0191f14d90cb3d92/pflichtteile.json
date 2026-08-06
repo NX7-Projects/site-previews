@@ -1,0 +1,142 @@
+{
+  "haus": {
+    "name": "Verband Jahrfeier Völkerschlacht b. Leipzig 1813 e. V.",
+    "rechtsform": "eingetragener Verein",
+    "adresse": {
+      "strasse": "Kirchstr. 40",
+      "plz": "04416",
+      "ort": "Markkleeberg"
+    },
+    "telefon": "+49 341 35544418",
+    "email": "info@leipzig1813.com",
+    "vertretung": "Michél Kothe (Vorstandsvorsitzender), Jürgen Hoffmann (stellv. Vorsitzender)",
+    "register": "Amtsgericht Leipzig, VR 10957"
+  },
+  "datenschutz": {
+    "hoster": "GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA",
+    "kontaktformular": false
+  },
+  "barrierefreiheit": {
+    "vereinbarkeit": "teilweise",
+    "einschraenkungen": [
+      "Zur baulichen Barrierefreiheit des Museums vor Ort liegen keine geprüften Angaben vor; die Seite verweist deshalb auf telefonische Auskunft statt auf ungesicherte Angaben.",
+      "Die verlinkten Seiten Dritter (unter anderem die bisherige Website des Hauses) unterliegen nicht dieser Erklärung."
+    ]
+  },
+  "bilder": [
+    {
+      "stamm": "hero-torbogen",
+      "datei": "20240608.Torhaus Dölitz.-019.1.jpg",
+      "urheber": "Bybbisch94",
+      "lizenz": "CC BY 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:20240608.Torhaus_D%C3%B6litz.-019.1.jpg"
+    },
+    {
+      "stamm": "portal-bruecke",
+      "datei": "20240608.Torhaus Dölitz.-018.jpg",
+      "urheber": "Bybbisch94",
+      "lizenz": "CC BY 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:20240608.Torhaus_D%C3%B6litz.-018.jpg"
+    },
+    {
+      "stamm": "tor-parkseite",
+      "datei": "20240608.Torhaus Dölitz.-012.jpg",
+      "urheber": "Bybbisch94",
+      "lizenz": "CC BY 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:20240608.Torhaus_D%C3%B6litz.-012.jpg"
+    },
+    {
+      "stamm": "torhaus-wiese",
+      "datei": "20240608.Torhaus Dölitz.-011.jpg",
+      "urheber": "Bybbisch94",
+      "lizenz": "CC BY 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:20240608.Torhaus_D%C3%B6litz.-011.jpg"
+    },
+    {
+      "stamm": "allee",
+      "datei": "20240608.Torhaus Dölitz.-021.jpg",
+      "urheber": "Bybbisch94",
+      "lizenz": "CC BY 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:20240608.Torhaus_D%C3%B6litz.-021.jpg"
+    },
+    {
+      "stamm": "apelsteine",
+      "datei": "20240608.Torhaus Dölitz.-015.jpg",
+      "urheber": "Bybbisch94",
+      "lizenz": "CC BY 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:20240608.Torhaus_D%C3%B6litz.-015.jpg"
+    },
+    {
+      "stamm": "tafel-1813",
+      "datei": "20240608.Torhaus Dölitz.-017.jpg",
+      "urheber": "Bybbisch94",
+      "lizenz": "CC BY 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:20240608.Torhaus_D%C3%B6litz.-017.jpg"
+    },
+    {
+      "stamm": "tafel-poniatowski",
+      "datei": "20240608.Torhaus Dölitz.-016.jpg",
+      "urheber": "Bybbisch94",
+      "lizenz": "CC BY 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:20240608.Torhaus_D%C3%B6litz.-016.jpg"
+    },
+    {
+      "stamm": "torhaus-frontal",
+      "datei": "Leipzig Doelitz Torhaus-02.jpg",
+      "urheber": "Radler59",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Leipzig_Doelitz_Torhaus-02.jpg"
+    },
+    {
+      "stamm": "muehlpleisse",
+      "datei": "Mühlpleiße Dölitzer Torhaus.jpg",
+      "urheber": "Martin Geisler",
+      "lizenz": "CC BY-SA 3.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:M%C3%BChlplei%C3%9Fe_D%C3%B6litzer_Torhaus.jpg"
+    },
+    {
+      "stamm": "marke-torhaus",
+      "datei": "torhaus-logo.png",
+      "urheber": "Verband Jahrfeier Völkerschlacht b. Leipzig 1813 e. V.",
+      "lizenz": "Bildmarke des Hauses, mit freundlicher Verwendung im Auftrag des Hauses",
+      "quelle": "torhaus-doelitz.eu (bisherige Website des Hauses)",
+      "seite": "http://www.torhaus-doelitz.eu/wp-content/themes/torhaus-theme/img/torhaus-logo.png"
+    }
+  ],
+  "schriften": [
+    {
+      "name": "Bodoni Moda",
+      "urheber": "Indestructible Type",
+      "lizenz": "SIL Open Font License 1.1",
+      "lizenzUrl": "https://openfontlicense.org/",
+      "seite": "https://fonts.google.com/specimen/Bodoni+Moda"
+    },
+    {
+      "name": "Archivo",
+      "urheber": "Omnibus-Type",
+      "lizenz": "SIL Open Font License 1.1",
+      "lizenzUrl": "https://openfontlicense.org/",
+      "seite": "https://fonts.google.com/specimen/Archivo"
+    }
+  ]
+}

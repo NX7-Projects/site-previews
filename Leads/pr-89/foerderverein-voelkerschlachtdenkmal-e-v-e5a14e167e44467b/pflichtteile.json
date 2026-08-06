@@ -1,0 +1,118 @@
+{
+  "haus": {
+    "name": "Förderverein Völkerschlachtdenkmal e. V.",
+    "rechtsform": "eingetragener Verein",
+    "adresse": {
+      "strasse": "Magazingasse 4",
+      "plz": "04109",
+      "ort": "Leipzig"
+    },
+    "vertretung": "Klaus-Michael Rohrwacher (Erster Vorsitzender), Mathias Schwarz (Zweiter Vorsitzender), Dana Dolling-Fautz (Schatzmeisterin), Dr. Jürgen Fechner, Dr. Anselm Hartinger, Frank-Thomas Suppee, Virginie Wild",
+    "telefon": "+49 341 9618538",
+    "telefax": "+49 341 9618540",
+    "email": "kontakt@voelkerschlachtdenkmal.de",
+    "verantwortlich": "Klaus-Michael Rohrwacher, Erster Vorsitzender, Magazingasse 4, 04109 Leipzig",
+    "ansprechpartner": "Dr. Irina Poldrack, Leiterin Geschäftsstelle",
+    "hinweise": [
+      "Registergericht und Vereinsregisternummer sind auf der bisherigen Website des Vereins (voelkerschlachtdenkmal.de/index.php/impressum, abgerufen am 03.08.2026) nicht angegeben und liessen sich aus oeffentlichen Quellen nicht belegen. Sie wurden deshalb weggelassen und muessen vom Verein ergaenzt werden.",
+      "Eine Umsatzsteuer-Identifikationsnummer ist nicht belegt."
+    ]
+  },
+  "datenschutz": {
+    "hoster": "GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA",
+    "kontaktformular": false,
+    "hinweise": [
+      "Die Seite bindet keine externen Schriften, Karten, Videos oder Analysedienste ein. Es werden keine Cookies gesetzt.",
+      "Ausgehende Links fuehren unter anderem zu betterplace.org (Spendenplattform); dort gelten die Datenschutzbestimmungen des Betreibers."
+    ]
+  },
+  "barrierefreiheit": {
+    "vereinbarkeit": "teilweise",
+    "einschraenkungen": [
+      "Die Anfahrt wird als Text beschrieben; eine interaktive Karte ist nicht eingebunden.",
+      "Beitrittserklaerung, Satzung und Beitragsordnung liegen nur als Dokumente der Geschaeftsstelle vor und sind ueber die Website nicht barrierefrei abrufbar.",
+      "Die Angaben zu Oeffnungszeiten, Preisen und Barrierefreiheit vor Ort stammen von der Stiftung Voelkerschlachtdenkmal Leipzig und werden hier nur wiedergegeben."
+    ]
+  },
+  "bilder": [
+    {
+      "stamm": "denkmal-spiegelung",
+      "datei": "Völkerschlachtdenkmal 2023.jpg",
+      "urheber": "AccAkut441",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:V%C3%B6lkerschlachtdenkmal_2023.jpg",
+      "bearbeitung": "skaliert"
+    },
+    {
+      "stamm": "einweihung-1913",
+      "datei": "Feierlichkeiten Einweihung Voelkerschlachtdenkmal Leipzig 1913.jpg",
+      "urheber": "Atelier Hermann Walter (Bernhard Müller, Karl Walter)",
+      "lizenz": "Public Domain",
+      "lizenzUrl": "https://commons.wikimedia.org/wiki/Template:PD-old",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Feierlichkeiten_Einweihung_Voelkerschlachtdenkmal_Leipzig_1913.jpg",
+      "bearbeitung": "beschnitten und skaliert"
+    },
+    {
+      "stamm": "sanierung-wasserbecken",
+      "datei": "Sanierung des Wasserbeckens.jpg",
+      "urheber": "Pakeha",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Sanierung_des_Wasserbeckens.jpg",
+      "bearbeitung": "skaliert"
+    },
+    {
+      "stamm": "ruhmeshalle-tapferkeit",
+      "datei": "Leipzig Völkerschlachtdenkmal Ruhmeshalle statues 01.JPG",
+      "urheber": "Ad Meskens",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:Leipzig_V%C3%B6lkerschlachtdenkmal_Ruhmeshalle_statues_01.JPG",
+      "bearbeitung": "skaliert"
+    },
+    {
+      "stamm": "waechter-krypta",
+      "datei": "Völkerschlachtdenkmal Leipzig Wächter in der Krypta.jpg",
+      "urheber": "Karl-Heinz Schmidt",
+      "lizenz": "CC BY-SA 3.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:V%C3%B6lkerschlachtdenkmal_Leipzig_W%C3%A4chter_in_der_Krypta.jpg",
+      "bearbeitung": "skaliert"
+    },
+    {
+      "stamm": "gelaende-luftbild",
+      "datei": "Völkerschlachtdenkmal mit Wasserbecken Luftaufnahme Mai 2023 von schräg hinten.jpg",
+      "urheber": "RealPixelStreet",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:V%C3%B6lkerschlachtdenkmal_mit_Wasserbecken_Luftaufnahme_Mai_2023_von_schr%C3%A4g_hinten.jpg",
+      "bearbeitung": "skaliert"
+    },
+    {
+      "stamm": "denkmal-wasserbecken",
+      "datei": "Völkerschlachtdenkmal Leipzig 2022 01.jpg",
+      "urheber": "Jojoo64",
+      "lizenz": "CC BY-SA 4.0",
+      "lizenzUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "quelle": "Wikimedia Commons",
+      "seite": "https://commons.wikimedia.org/wiki/File:V%C3%B6lkerschlachtdenkmal_Leipzig_2022_01.jpg",
+      "bearbeitung": "beschnitten (21:9) und skaliert"
+    },
+    {
+      "stamm": "marke-schichten",
+      "datei": "eigene Zeichnung (SVG, in denkmal.css eingebettet)",
+      "urheber": "eigene Arbeit für diese Website",
+      "lizenz": "keine Fremdrechte",
+      "quelle": "Eigenerstellung",
+      "seite": "",
+      "bearbeitung": "Vektorzeichnung der Denkmalsilhouette aus waagerechten Schichtlinien, angelehnt an das Motiv des bisherigen Vereinszeichens (voelkerschlachtdenkmal.de/images/vsd_logo.jpg, nur 74 × 56 Pixel und damit nicht verwendbar)"
+    }
+  ]
+}
